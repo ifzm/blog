@@ -3,13 +3,14 @@
         <p>{{ text }}</p>
         <div>
             <input type="text" v-model="text">
-            <router-link to="/ha">haha</router-link>
+            <router-link to="/async">async test</router-link>
         </div>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+
     export default {
         data() {
             return {

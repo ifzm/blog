@@ -4,6 +4,7 @@
 
 <script>
     import axios from 'axios'
+    import nprogress from 'nprogress'
 
     export default {
         data() {
@@ -12,6 +13,7 @@
             }
         },
         created() {
+            // nprogress.
             axios.get('http://localhost:4000/users')
                 .then((res) => {
                     console.log(res)
