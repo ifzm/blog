@@ -1,0 +1,11 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "blog service site.",
+  "main": "index.js",
+  "author": "ifzm.cn",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
