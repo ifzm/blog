@@ -75,14 +75,14 @@
         position: relative;
         display: none;
     }
-
+    
     .block-title span {
         background: #fff;
         position: relative;
         z-index: 1;
         padding-right: 16px;
     }
-
+    
     .block-title::after {
         content: '';
         position: absolute;
@@ -92,27 +92,31 @@
         top: 11px;
         background: #f0f0f0;
     }
-
+    
+    .post-item {
+        padding: 30px 0;
+    }
+    
     .post-item .title {
         color: #333;
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: bold;
     }
-
+    
     .post-item .item-meta {
         font-size: 14px;
         color: #999;
         padding: 15px 0;
     }
-
+    
     .post-item .meta-left {
         float: left;
     }
-
+    
     .post-item .meta-right {
         float: right;
     }
-
+    
     .bull {
         margin: 0 2px;
     }
