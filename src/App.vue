@@ -152,4 +152,32 @@
     .about .motto {
         color: #888;
     }
+    
+    .post-item {
+        padding: 30px 0;
+    }
+    
+    .post-item .title {
+        color: #333;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    
+    .post-item .item-meta {
+        font-size: 14px;
+        color: #999;
+        padding: 15px 0;
+    }
+    
+    .post-item .meta-left {
+        float: left;
+    }
+    
+    .post-item .meta-right {
+        float: right;
+    }
+    
+    .bull {
+        margin: 0 2px;
+    }
 </style>
