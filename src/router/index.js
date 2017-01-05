@@ -6,6 +6,12 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/async',
     component: resolve => require(['../components/Async.vue'], resolve)
+}, {
+    path: '/',
+    component: resolve => require(['../components/Posts.vue'], resolve)
+}, {
+    path: '/post/:id',
+    component: resolve => require(['../components/Post.vue'], resolve)
 }]
 
 export default new VueRouter({
