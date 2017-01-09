@@ -1,7 +1,5 @@
 <template>
     <div id="app">
-        <header-bar></header-bar>
-
         <main>
             <div class="about">
                 <div class="avatar">
@@ -16,7 +14,6 @@
                 </transition>
             </div>
         </main>
-
     </div>
 </template>
 
@@ -27,7 +24,7 @@
         data() {
             return {
                 name: '小明的日常随记',
-                motto: '什么时候才能认真做好一件事啊，~!@#$%^&*。'
+                motto: '什么时候才能认真做好一件事啊，@#$%^&*~'
             }
         },
         components: {
@@ -151,6 +148,7 @@
     
     .about .motto {
         color: #888;
+        font-size: .9em;
     }
     
     .post-item {

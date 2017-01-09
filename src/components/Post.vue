@@ -18,12 +18,11 @@
                     </div>
                 </div>
                 <div class="item-description">{{ post.description }}</div>
-                <div class="item-content">{{ post.content }}</div>
+                <div class="item-content" v-html="post.content"></div>
             </article>
             <div class="sponsor">
                 <div class>打赏支持</div>
-                <img src="../assets/alipay.jpg" alt="支付宝赞助">
-                <img src="../assets/wxpay.png" alt="微信赞助">
+                <img src="../assets/pay.png" alt="赞助">
             </div>
         </div>
         <div v-if="err != null">
@@ -33,6 +32,7 @@
 </template>
 
 <script>
+    import NProgress from 'nprogress'
     import axios from 'axios'
 
     export default {
@@ -52,12 +52,16 @@
             fetchData() {
                 this.err = this.post = null
 
+                NProgress.start()
                 axios.get('post/' + this.$route.params.id)
                     .then(res => {
                         this.post = res.data
                     })
                     .catch(err => {
                         this.err = err
+                    })
+                    .then(() => {
+                        NProgress.done()
                     })
             }
         }
@@ -71,8 +75,6 @@
     }
     
     .sponsor img {
-        width: 150px;
-        height: 150px;
-        margin: 10px 20px;
+        margin: 5px 20px;
     }
 </style>

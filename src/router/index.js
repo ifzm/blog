@@ -5,13 +5,13 @@ Vue.use(VueRouter)
 
 const routes = [{
     path: '/async',
-    component: resolve => require(['../components/Async.vue'], resolve)
+    component: resolve => require(['../components/Async'], resolve)
 }, {
     path: '/',
-    component: resolve => require(['../components/Posts.vue'], resolve)
+    component: resolve => require(['../components/Posts'], resolve)
 }, {
     path: '/post/:id',
-    component: resolve => require(['../components/Post.vue'], resolve)
+    component: resolve => require(['../components/Post'], resolve)
 }]
 
 export default new VueRouter({

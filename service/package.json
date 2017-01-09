@@ -1,13 +1,18 @@
 {
-  "name": "blog",
-  "version": "0.0.1",
-  "description": "blog service site.",
-  "main": "index.js",
-  "author": "ifzm.cn",
-  "license": "MIT",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "moment": "^2.17.1"
-  }
+    "name": "blog",
+    "version": "0.0.1",
+    "description": "blog service site.",
+    "main": "index.js",
+    "author": "ifzm.cn",
+    "license": "MIT",
+    "dependencies": {
+        "bluebird": "^3.4.7",
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0",
+        "highlight.js": "^9.9.0",
+        "lodash": "^4.17.4",
+        "marked": "^0.3.6",
+        "moment": "^2.17.1",
+        "mongoose": "^4.7.6"
+    }
 }
