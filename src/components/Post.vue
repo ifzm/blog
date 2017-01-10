@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="item-description">{{ post.description }}</div>
-                <div class="item-content" v-html="post.content"></div>
+                <div class="item-content markdown" v-html="post.content"></div>
             </article>
             <div class="sponsor">
                 <div class>打赏支持</div>

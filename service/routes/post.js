@@ -1,4 +1,5 @@
 const moment = require('moment')
+const utils = require('../utils')
 const Post = require('../models/post')
 
 module.exports = app => {
@@ -57,6 +58,7 @@ module.exports = app => {
         Post.findOne({ _id: req.params.id })
             .then(row => {
                 row.meta.time = moment(row.meta.time).fromNow()
+                row.content = utils.marked(row.content)
                 res.json(row)
             })
             .catch(err => {

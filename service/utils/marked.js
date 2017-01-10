@@ -12,7 +12,8 @@ renderer.code = (code, lang) => {
 }
 
 marked.setOptions({
-    renderer: renderer
+    renderer: renderer,
+    breaks: true
 })
 
 module.exports = marked

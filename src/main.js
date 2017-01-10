@@ -3,14 +3,13 @@ import router from './router'
 import App from './App'
 
 import NProgress from 'nprogress'
-import '../static/nprogress.css'
-import '../static/material.css'
-
+import 'nprogress/nprogress.css'
 NProgress.configure({ showSpinner: false })
 
 import axios from 'axios'
-
 axios.defaults.baseURL = 'http://localhost:4000/'
+
+import '../static/base.css'
 
 new Vue({
     router,

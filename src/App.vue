@@ -24,7 +24,7 @@
         data() {
             return {
                 name: '小明的日常随记',
-                motto: '什么时候才能认真做好一件事啊，@#$%^&*~'
+                motto: '什么时候才能认真做好一件事啊，@#$%^&*~...'
             }
         },
         components: {
@@ -34,68 +34,6 @@
 </script>
 
 <style lang="css">
-    * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-    
-    html,
-    body {
-        letter-spacing: 0;
-        font-family: "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
-        font-size: 1em;
-        color: #333;
-    }
-    
-    .clearfix {
-        zoom: 1;
-    }
-    
-    .clearfix:after {
-        clear: both;
-        content: '.';
-        display: block;
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
-    
-    a {
-        outline-style: none;
-        text-decoration: none;
-        color: gray;
-    }
-    
-    a:hover {
-        color: #333;
-    }
-    
-     ::-webkit-scrollbar-track-piece {
-        background-color: #fff;
-        border-radius: 0;
-    }
-    
-     ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-    }
-    
-     ::-webkit-scrollbar-thumb {
-        height: 50px;
-        background-color: #999;
-        border-radius: 4px;
-        outline: 2px solid #fff;
-        outline-offset: -2px;
-        border: 2px solid #fff;
-    }
-    
-     ::-webkit-scrollbar-thumb:hover {
-        height: 50px;
-        background-color: #9f9f9f;
-        border-radius: 4px;
-    }
-    
     main {
         padding: 10px;
     }
