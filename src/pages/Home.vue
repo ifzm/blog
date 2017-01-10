@@ -13,7 +13,7 @@
                 </div>
             </form>
         </div>
-        <div class="create-right" v-html="getContent"></div>
+        <div class="create-right markdown" v-html="getContent"></div>
     </div>
 </template>
 
@@ -71,7 +71,7 @@
 
 <style lang="css">
     .form {
-        padding: 10px;
+        padding: 20px;
         background: #eaeaea;
     }
     
@@ -151,8 +151,8 @@
     .create-right {
         float: right;
         width: calc(50% - 5px);
-        background: #eaeaea;
-        min-height: 311px;
+        border: 2px dashed #ccc;
+        min-height: 331px;
         padding: 10px;
         font: 13.3333px Arial;
     }
