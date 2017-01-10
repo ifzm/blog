@@ -1,5 +1,5 @@
 <template>
-    <div class="clearfix">
+    <div class="clearfix post-create">
         <div class="create-left">
             <form class="form" action="" onsubmit="return false">
                 <div class="control-group">
@@ -70,6 +70,10 @@
 </script>
 
 <style lang="css">
+    .post-create {
+        min-width: 1200px;
+    }
+    
     .form {
         padding: 20px;
         background: #eaeaea;
@@ -90,7 +94,7 @@
     }
     
     .form textarea {
-        height: 180px;
+        height: 220px;
     }
     
     input:focus,
@@ -152,7 +156,7 @@
         float: right;
         width: calc(50% - 5px);
         border: 2px dashed #ccc;
-        min-height: 331px;
+        min-height: 371px;
         padding: 10px;
         font: 13.3333px Arial;
     }
