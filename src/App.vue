@@ -80,13 +80,13 @@
     }
     
     .about .name {
-        font-weight: bold;
+        font-weight: 600;
         color: #333;
     }
     
     .about .motto {
         color: #888;
-        font-size: .9em;
+        font-size: .8em;
     }
     
     .post-item {

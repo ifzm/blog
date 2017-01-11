@@ -1,94 +1,154 @@
-    ::-webkit-scrollbar-track-piece {
-       background-color: #fff;
-       border-radius: 0;
-   }
-   
-    ::-webkit-scrollbar {
-       width: 8px;
-       height: 8px;
-   }
-   
-    ::-webkit-scrollbar-thumb {
-       height: 50px;
-       background-color: #999;
-       border-radius: 4px;
-       outline: 2px solid #fff;
-       outline-offset: -2px;
-       border: 2px solid #fff;
-   }
-   
-    ::-webkit-scrollbar-thumb:hover {
-       height: 50px;
-       background-color: #9f9f9f;
-       border-radius: 4px;
-   }
-   
-   * {
-       margin: 0;
-       padding: 0;
-       outline: none;
-       list-style: none;
-       box-sizing: inherit;
-   }
-   
-   html,
-   body {
-       font-family: "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
-       font-size: 1em;
-       color: #333;
-       letter-spacing: 0;
-       box-sizing: border-box;
-   }
-   
-   .clearfix {
-       zoom: 1;
-   }
-   
-   .clearfix:after {
-       clear: both;
-       content: '.';
-       display: block;
-       width: 0;
-       height: 0;
-       visibility: hidden;
-   }
-   
-   a {
-       outline-style: none;
-       text-decoration: none;
-       color: gray;
-   }
-   
-   a:hover {
-       color: #333;
-   }
-   
-   .markdown h1 {
-       padding-bottom: 0.3em;
-       border-bottom: 1px solid #eee;
-   }
-   
-   .markdown blockquote {
-       padding: 0 1em;
-       color: #777;
-       border-left: 0.25em solid #ddd;
-   }
-   
-   .markdown p,
-   .markdown blockquote,
-   .markdown ul,
-   .markdown ol,
-   .markdown dl,
-   .markdown table,
-   .markdown pre {
-       margin-bottom: 18px;
-   }
-   
-   .markdown h1,
-   .markdown h2,
-   .markdown h3,
-   .markdown h4,
-   .markdown h5,
-   .markdown h6 {
-       margin-bottom: 16px;
-   }
+::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #999;
+    border-radius: 4px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    height: 50px;
+    background-color: #9f9f9f;
+    border-radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    list-style: none;
+    box-sizing: inherit;
+    line-height: 1.45;
+    font-family: "Monaco", "Courier New", monospace, sans-serif;
+}
+
+body {
+    font-size: 1em;
+    color: #333;
+    letter-spacing: 0;
+    box-sizing: border-box;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+a {
+    outline-style: none;
+    text-decoration: none;
+    color: gray;
+}
+
+a:hover {
+    color: #333;
+}
+
+.markdown {
+    word-wrap: break-word;
+}
+
+.markdown h1 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eee;
+}
+
+.markdown blockquote {
+    padding: 0 1em;
+    color: #777;
+    border-left: 0.25em solid #ddd;
+}
+
+.markdown pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    position: relative;
+}
+
+.markdown p,
+.markdown blockquote,
+.markdown ul,
+.markdown ol,
+.markdown dl,
+.markdown table,
+.markdown pre {
+    margin-bottom: 18px;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+    margin-bottom: 16px;
+}
+
+.markdown code[class^="lang-"]:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 15px;
+    color: #ccc;
+    line-height: 15px;
+    text-align: right;
+    padding: 16px 16px 0;
+}
+
+.markdown code.lang-bash:after {
+    content: 'BASH';
+}
+
+.markdown code.lang-js:after {
+    content: 'JS';
+}
+
+.markdown code.lang-java:after {
+    content: 'JAVA';
+}
+
+.markdown code.lang-html:after {
+    content: 'HTML';
+}
+
+.markdown code.lang-css:after {
+    content: 'CSS';
+}
+
+.markdown code.lang-xml:after {
+    content: 'XML';
+}
+
+.markdown code.lang-json:after {
+    content: 'JSON';
+}
+
+.markdown code.lang-sql:after {
+    content: 'SQL';
+}
+
+.markdown code.lang-markdown:after {
+    content: 'MD';
+}

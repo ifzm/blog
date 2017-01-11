@@ -6,7 +6,7 @@
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
                 <div class="control-group">
-                    <textarea placeholder="内容" v-model="content"></textarea>
+                    <textarea placeholder="内容" v-model="content" spellcheck="false"></textarea>
                 </div>
                 <div class="control-group">
                     <button class="btn btn-success" @click="save()">保存</button>
@@ -22,7 +22,7 @@
     import axios from 'axios'
     import marked from 'marked'
     import hljs from 'highlight.js'
-    import 'highlight.js/styles/agate.css'
+    import 'highlight.js/styles/color-brewer.css'
 
     marked.setOptions({
         breaks: true,
@@ -94,7 +94,7 @@
     }
     
     .form textarea {
-        height: 220px;
+        min-height: 220px;
     }
     
     input:focus,
@@ -157,7 +157,6 @@
         width: calc(50% - 5px);
         border: 2px dashed #ccc;
         min-height: 371px;
-        padding: 10px;
-        font: 13.3333px Arial;
+        padding: 20px;
     }
 </style>
