@@ -68,8 +68,11 @@ a:hover {
 }
 
 .markdown h1 {
-    padding-bottom: 0.3em;
-    border-bottom: 1px solid #eee;
+    font-size: 2em;
+}
+
+.markdown h2 {
+    font-size: 1.5em;
 }
 
 .markdown blockquote {
@@ -104,6 +107,8 @@ a:hover {
 .markdown h5,
 .markdown h6 {
     margin-bottom: 16px;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eee;
 }
 
 .markdown code[class^="lang-"]:after {
