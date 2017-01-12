@@ -22,7 +22,6 @@
     import axios from 'axios'
     import marked from 'marked'
     import hljs from 'highlight.js'
-    import 'highlight.js/styles/color-brewer.css'
 
     marked.setOptions({
         breaks: true,

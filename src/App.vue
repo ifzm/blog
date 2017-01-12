@@ -18,6 +18,8 @@
 </template>
 
 <script>
+    import '../static/base.css'
+    import 'highlight.js/styles/color-brewer.css'
     import HeaderBar from './components/HeaderBar'
 
     export default {
@@ -95,12 +97,12 @@
     
     .post-item .title {
         color: #333;
-        font-size: 1.1em;
+        font-size: 1.3em;
         font-weight: bold;
     }
     
     .post-item .item-meta {
-        font-size: 14px;
+        font-size: .8em;
         color: #999;
         padding: 15px 0;
     }

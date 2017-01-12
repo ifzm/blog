@@ -9,8 +9,6 @@ NProgress.configure({ showSpinner: false })
 import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:4000/'
 
-import '../static/base.css'
-
 new Vue({
     router,
     render: h => h(App)
