@@ -3,21 +3,31 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-let web = [{
-    path: '/async',
-    component: resolve => require(['../components/Async'], resolve)
-}, {
+let routes = [{
     path: '/',
-    component: resolve => require(['../components/Posts'], resolve)
+    component: resolve => require(['../pages/Index'], resolve),
+    children: [{
+        path: '/',
+        component: resolve => require(['../components/Posts'], resolve),
+    }, {
+        path: '/post/:id',
+        component: resolve => require(['../components/Post'], resolve)
+    }]
 }, {
-    path: '/post/:id',
-    component: resolve => require(['../components/Post'], resolve)
+    path: '/admin',
+    component: resolve => require(['../pages/Admin'], resolve),
+    children: [{
+        path: '/admin/article',
+        name: '发布',
+        component: resolve => require(['../pages/Article'], resolve)
+    }]
 }]
 
-let routes = [{
-    path: '/admin',
-    component: resolve => require(['../pages/Home'], resolve)
-}].concat(web)
+routes.some(route => {
+    if (route.path === '/admin') {
+        return window.MENUS = route.children
+    }
+})
 
 export default new VueRouter({
     mode: 'history',

@@ -1,20 +1,20 @@
 <template>
     <div class="dialog-container" :class="classes" ref="dialog" @keyup.esc.stop="close" tabindex="0">
         <div class="dialog">
-            <div class="dialog-title" v-if="title">{{ title }}</div>
+            <div class="dialog-title" v-if="options.title">{{ options.title }}</div>
 
-            <div class="dialog-content" v-if="content">{{ content }}</div>
+            <div class="dialog-content" v-if="options.content" v-html="options.content"></div>
             <div class="dialog-content" v-else>
                 <slot></slot>
             </div>
             
             <div class="dialog-actions">
-                <button class="btn" v-if="cancel" @click="close('cancel')">{{ cancel }}</button>
-                <button class="btn" @click="close('confirm')">{{ confirm }}</button>
+                <button class="button" v-if="options.cancel" @click="close('cancel')">{{ options.cancel }}</button>
+                <button class="button" @click="close('confirm')">{{ options.confirm }}</button>
             </div>
         </div>
         
-        <layer class="dialog-layer" :class="classes" @close="close()"></layer>
+        <layer class="dialog-layer" :class="classes" @close="close"></layer>
     </div>
 </template>
 
@@ -25,21 +25,15 @@
         components: {
             Layer
         },
-        props: {
-            title: String,
-            content: String,
-            confirm: {
-                type: String,
-                default: 'Confirm'
-            },
-            cancel: {
-                type: String,
-                default: 'Cancel'
-            }
-        },
         data() {
             return {
-                active: false
+                active: false,
+                options: {
+                    title: String,
+                    content: String,
+                    cancel: String,
+                    confirm: 'Ok'
+                }
             }
         },
         computed: {
@@ -50,31 +44,27 @@
             }
         },
         methods: {
-            open() {
+            open(options) {
+                Object.assign(this.options, options)
+
                 this.$root.$el.appendChild(this.$el)
-                this.active = true
+
+                setTimeout(() => {
+                    this.active = true
+                    this.$el.focus()
+                })
 
                 this.$emit('open')
             },
             close(type) {
                 if (this.$root.$el.contains(this.$el)) {
-                    this.$nextTick(() => {
-                        let cleanElement = () => {
-                            let activeRipple = this.$el.querySelector('.dialog.active');
-                            if (activeRipple) {
-                                activeRipple.classList.remove('active');
-                            }
+                    this.active = false
 
-                            this.$el.removeEventListener('transitionend', cleanElement)
-                            this.$root.$el.removeChild(this.$el);
-                        }
+                    setTimeout(() => {
+                        this.$root.$el.removeChild(this.$el)
+                    }, 400);
 
-                        setTimeout(() => {
-                            this.$el.addEventListener('transitionend', cleanElement)
-                        })
-
-                        this.$emit('close')
-                    })
+                    this.$emit('close', type)
                 }
             }
         }
@@ -107,6 +97,8 @@
     .dialog-container.active .dialog {
         opacity: 1 !important;
         transform: scale(1) !important;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-property: opacity, transform;
     }
     
     .dialog-layer {
@@ -131,6 +123,7 @@
         box-shadow: 0 7px 9px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12);
         transform: scale(0.9, 0.85);
         transform-origin: center center;
+        transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s 0.05s cubic-bezier(0.25, 0.8, 0.25, 1);
         will-change: opacity, transform;
         background-color: #fff;
         color: #000;
@@ -139,6 +132,7 @@
     .dialog-title {
         margin-bottom: 20px;
         padding: 24px 24px 0;
+        font-size: 1.3em;
     }
     
     .dialog-content {
@@ -179,13 +173,15 @@
         content: " ";
     }
     
-    .dialog-actions .btn {
+    .dialog-actions .button {
         min-width: 64px;
         margin: 0;
         padding: 0 8px;
+        color: #2196f3;
+        text-transform: uppercase;
     }
     
-    .dialog-actions .btn+.btn {
+    .dialog-actions .button+.button {
         margin-left: 8px;
     }
 </style>

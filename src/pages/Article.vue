@@ -1,7 +1,7 @@
 <template>
     <div class="clearfix post-create">
         <div class="create-left">
-            <form class="form" action="" onsubmit="return false">
+            <form class="form success" action="" onsubmit="return false">
                 <div class="control-group">
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
@@ -9,21 +9,28 @@
                     <textarea placeholder="内容" v-model="content" spellcheck="false"></textarea>
                 </div>
                 <div class="control-group">
-                    <button class="btn btn-success" @click="save()">
+                    <checkbox checked class="success">足球</checkbox>
+                    <checkbox checked>篮球</checkbox>
+                    <checkbox>棒球</checkbox>
+                    <checkbox checked disabled>乒乓球</checkbox>
+                    <checkbox disabled>网球</checkbox>
+                </div>
+                <div class="control-group">
+                    <button class="button success shadow" @click="save()">
                         保存
                     </button>
-                    <dialogbox ref="dialog1">
-                        测试
-                    </dialogbox>
                 </div>
             </form>
         </div>
         <div class="create-right markdown" v-html="getContent"></div>
+
+        <dialogbox ref="dialog" @close="close"></dialogbox>
     </div>
 </template>
 
 <script>
     import Dialog from '../components/Dialog'
+    import Checkbox from '../components/Checkbox'
 
     import NProgress from 'nprogress'
     import axios from 'axios'
@@ -40,9 +47,11 @@
 
     export default {
         components: {
+            Checkbox,
             Dialogbox: Dialog
         },
         data() {
+            // console.log(this.$route.path.split('/').filter(val => val.trim() !== ''))
             return {
                 title: '',
                 content: '',
@@ -55,9 +64,16 @@
             }
         },
         methods: {
+            close(type) {
+                // alert(type)
+            },
             save() {
-
-                this.$refs['dialog1'].open()
+                this.$refs.dialog.open({
+                    title: '🚀Post created!',
+                    content: '&#x1F469;⚡️🚴Your post <strong>Material Design is awesome</strong> has been created.',
+                    confirm: '确认',
+                    cancel: '取消'
+                })
 
                 return
 
@@ -85,10 +101,6 @@
 </script>
 
 <style lang="css">
-    .post-create {
-        min-width: 1200px;
-    }
-    
     .form {
         padding: 20px;
         background: #eaeaea;
@@ -103,7 +115,7 @@
         border: 2px solid white;
         padding: 7px;
         border-radius: 2px;
-        transition: all .3s;
+        transition: all .5s;
         resize: none;
         width: 100%;
     }
@@ -116,10 +128,32 @@
     input:active,
     textarea:focus,
     textarea:active {
+        border-color: rgba(0, 0, 0, 0.26);
+    }
+    
+    .form.success input:focus,
+    .form.success input:active,
+    .form.success textarea:focus,
+    .form.success textarea:active,
+    input.success:focus,
+    input.success:active,
+    textarea.success:focus,
+    textarea.success:active {
         border-color: #51a351;
     }
     
-    .btn {
+    .form.primary input:focus,
+    .form.primary input:active,
+    .form.primary textarea:focus,
+    .form.primary textarea:active,
+    input.primary:focus,
+    input.primary:active,
+    textarea.primary:focus,
+    textarea.primary:active {
+        border-color: #2196f3;
+    }
+    
+    .button {
         min-width: 80px;
         min-height: 32px;
         line-height: 32px;
@@ -132,33 +166,44 @@
         border-radius: 2px;
         transition: all .4s cubic-bezier(.25, .8, .25, 1);
         text-align: center;
+        font-weight: 500;
+    }
+    
+    .button:hover,
+    .button:active,
+    .button:focus {
+        background-color: hsla(0, 0%, 60%, .2);
+        text-decoration: none;
+    }
+    
+    .button.shadow {
         box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
     }
     
-    .btn-default {
+    .button.default {
         color: black;
         background-color: #ffffff;
     }
     
-    .btn-success {
+    .button.success {
         color: white;
         background-color: #5bb75b;
     }
     
-    .btn-success:hover,
-    .btn-success:active,
-    .btn-success:focus {
+    .button.success:hover,
+    .button.success:active,
+    .button.success:focus {
         background-color: #51a351;
     }
     
-    .btn-primary {
+    .button.primary {
         color: white;
         background-color: #2196f3;
     }
     
-    .btn-primary:hover,
-    .btn-primary:active,
-    .btn-primary:focus {
+    .button.primary:hover,
+    .button.primary:active,
+    .button.primary:focus {
         background-color: #1e88e5;
     }
     
@@ -171,7 +216,8 @@
         float: right;
         width: calc(50% - 5px);
         border: 2px dashed #ccc;
-        min-height: 371px;
+        height: 400px;
         padding: 20px;
+        overflow-y: auto;
     }
 </style>

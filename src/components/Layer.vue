@@ -24,7 +24,7 @@
         pointer-events: none;
         background-color: rgba(0, 0, 0, 0.54);
         transform: translate3d(0, 0, 0);
-        transition: all 5s cubic-bezier(.35, 0, .25, 1);
+        transition: all .5s cubic-bezier(.35, 0, .25, 1);
     }
     
     .layer.active {
