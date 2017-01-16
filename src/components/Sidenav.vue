@@ -1,6 +1,6 @@
 <template>
-    <div class="md-sidenav" :class="classes" @keyup.esc="close" tabindex="0">
-        <div class="md-sidenav-content">
+    <div class="sidenav" :class="classes" @keyup.esc="close" tabindex="0">
+        <div class="sidenav-content">
             <slot></slot>
         </div>
 
