@@ -38,9 +38,7 @@
         },
         computed: {
             classes() {
-                return {
-                    active: this.active
-                }
+                return this.active && 'active'
             }
         },
         methods: {
