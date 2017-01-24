@@ -24,12 +24,12 @@
         </div>
         <div class="create-right markdown" v-html="getContent"></div>
 
-        <dialogbox ref="dialog" @close="close"></dialogbox>
+        <modal ref="dialog" @close="close"></modal>
     </div>
 </template>
 
 <script>
-    import Dialog from '../components/Dialog'
+    import Modal from '../components/Modal'
     import Checkbox from '../components/Checkbox'
 
     import NProgress from 'nprogress'
@@ -48,10 +48,9 @@
     export default {
         components: {
             Checkbox,
-            Dialogbox: Dialog
+            Modal
         },
         data() {
-            // console.log(this.$route.path.split('/').filter(val => val.trim() !== ''))
             return {
                 title: '',
                 content: '',

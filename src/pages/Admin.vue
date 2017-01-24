@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="app">
         <header class="navbar">
             <div class="navbar-info">
                 <div class="log">
@@ -16,10 +16,13 @@
                     
                 </div>
             </div>
-            <div class="navbar-menu">
-                
-                <menu-tree></menu-tree>
-            </div>
+            
+            <sidenav ref="sidenav">
+                <div class="header"></div>
+                <div class="content">
+                    <menu-tree></menu-tree>
+                </div>
+            </sidenav>
         </header>
         <main>
             <ol class="breadcrumb" v-show="breadcrumbs.length > 1">
@@ -37,10 +40,12 @@
 
 <script>
     import MenuTree from '../components/MenuTree'
+    import Sidenav from '../components/Sidenav'
 
     export default {
         components: {
-            MenuTree
+            MenuTree,
+            Sidenav
         },
         data() {
             console.log(window.MENUS)
@@ -67,6 +72,9 @@
             })
         },
         methods: {
+            showMenu() {
+                this.$refs.sidenav.open()
+            },
             shortcutClick(i) {
                 this.shortcuts.filter((shortcut, index) => {
                     if (i === index) {
@@ -97,12 +105,6 @@
     main {
         padding: 10px;
         padding-right: 20px;
-        overflow: auto;
-        position: absolute;
-        right: 0;
-        top: 70px;
-        width: calc(100% - 240px);
-        height: calc(100% - 80px);
     }
     
     .navbar-menu {

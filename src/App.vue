@@ -1,7 +1,5 @@
 <template>
-    <div id="app">
-        <transition name="slide-bottom">
-            <router-view></router-view>
-        </transition>
-    </div>
+    <transition name="slide-bottom">
+        <router-view></router-view>
+    </transition>
 </template>
