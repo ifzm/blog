@@ -12,7 +12,7 @@
             <header>
                 <div class="navbar-info">
                     <div class="log">
-                        
+
                     </div>
                     <ol class="shortcut">
                         <li :class="{ 'active': shortcut.active }" v-for="(shortcut, index) in shortcuts" @click.stop="shortcutClick(index)">
@@ -22,10 +22,11 @@
                         </li>
                     </ol>
                     <div class="info">
-                        
+
                     </div>
                 </div>
             </header>
+
             <main>
                 <ol class="breadcrumb" v-show="breadcrumbs.length > 1">
                     <li v-for="(item, index) in breadcrumbs" :class="{'active': index === breadcrumbs.length - 1}">
@@ -92,16 +93,6 @@
 </script>
 
 <style lang="css">
-    .view {
-        transition: all .5s cubic-bezier(.55, 0, .1, 1);
-        width: 100%;
-    }
-    
-    body {
-        height: 100%;
-        overflow: hidden;
-    }
-    
     #app {
         display: flex;
         flex: 1;
@@ -118,6 +109,7 @@
     }
     
     .page header {
+        z-index: 2;
         display: flex;
         height: 60px;
         box-shadow: 0 1px 4px rgba(0, 0, 0, .2), 0 1px 1px rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);

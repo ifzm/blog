@@ -7,13 +7,13 @@
             <div class="dialog-content" v-else>
                 <slot></slot>
             </div>
-            
+
             <div class="dialog-actions">
                 <button class="button" v-if="options.cancel" @click="close('cancel')">{{ options.cancel }}</button>
                 <button class="button" @click="close('confirm')">{{ options.confirm }}</button>
             </div>
         </div>
-        
+
         <layer class="dialog-layer" :class="classes" @close="close"></layer>
     </div>
 </template>

@@ -33,6 +33,13 @@
     font-family: "Monaco", "Roboto", Helvetica, "Noto Sans", "Noto", monospace, sans-serif;
 }
 
+body,
+html,
+#app {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-size: 14px;
     color: #333;
