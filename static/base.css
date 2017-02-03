@@ -38,6 +38,7 @@ body {
     color: #333;
     letter-spacing: 0;
     box-sizing: border-box;
+    background-color: #fff;
 }
 
 .clearfix {

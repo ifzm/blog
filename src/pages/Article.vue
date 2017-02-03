@@ -1,5 +1,5 @@
 <template>
-    <div class="clearfix post-create">
+    <div class="post-create">
         <div class="create-left">
             <form class="form success" action="" onsubmit="return false">
                 <div class="control-group">
@@ -206,17 +206,19 @@
         background-color: #1e88e5;
     }
     
-    .create-left {
-        float: left;
-        width: calc(50% - 5px);
+    .post-create {
+        display: flex;
+        flex-flow: row wrap;
+        padding-left: 10px;
+    }
+    
+    .create-left,
+    .create-right {
+        flex: 1 1 calc(50% - 10px);
+        margin-right: 10px;
     }
     
     .create-right {
-        float: right;
-        width: calc(50% - 5px);
         border: 2px dashed #ccc;
-        height: 400px;
-        padding: 20px;
-        overflow-y: auto;
     }
 </style>

@@ -1,40 +1,43 @@
 <template>
     <div id="app">
-        <header class="navbar">
-            <div class="navbar-info">
-                <div class="log">
-                    
-                </div>
-                <ol class="shortcut">
-                    <li :class="{ 'active': shortcut.active }" v-for="(shortcut, index) in shortcuts" @click.stop="shortcutClick(index)">
-                        <router-link :to="shortcut.url">
-                            <i class="icon" :class="shortcut.icon" v-if="shortcut.icon"></i>{{ shortcut.text }}
-                        </router-link>
-                    </li>
-                </ol>
-                <div class="info">
-                    
-                </div>
-            </div>
-            
+        <div class="sidebar">
             <sidenav ref="sidenav">
                 <div class="header"></div>
                 <div class="content">
                     <menu-tree></menu-tree>
                 </div>
             </sidenav>
-        </header>
-        <main>
-            <ol class="breadcrumb" v-show="breadcrumbs.length > 1">
-                <li v-for="(item, index) in breadcrumbs" :class="{'active': index === breadcrumbs.length - 1}">
-                    <router-link to="" v-if="index !== breadcrumbs.length - 1">{{ item }}</router-link>
-                    <span v-else>{{ item }}</span>
-                </li>
-            </ol>
-            <transition name="slide-bottom">
-                <router-view class="view"></router-view>
-            </transition>
-        </main>
+        </div>
+        <div class="page">
+            <header>
+                <div class="navbar-info">
+                    <div class="log">
+                        
+                    </div>
+                    <ol class="shortcut">
+                        <li :class="{ 'active': shortcut.active }" v-for="(shortcut, index) in shortcuts" @click.stop="shortcutClick(index)">
+                            <router-link :to="shortcut.url">
+                                <i class="icon" :class="shortcut.icon" v-if="shortcut.icon"></i>{{ shortcut.text }}
+                            </router-link>
+                        </li>
+                    </ol>
+                    <div class="info">
+                        
+                    </div>
+                </div>
+            </header>
+            <main>
+                <ol class="breadcrumb" v-show="breadcrumbs.length > 1">
+                    <li v-for="(item, index) in breadcrumbs" :class="{'active': index === breadcrumbs.length - 1}">
+                        <router-link to="" v-if="index !== breadcrumbs.length - 1">{{ item }}</router-link>
+                        <span v-else>{{ item }}</span>
+                    </li>
+                </ol>
+                <transition name="slide-bottom">
+                    <router-view class="view"></router-view>
+                </transition>
+            </main>
+        </div>
     </div>
 </template>
 
@@ -91,20 +94,39 @@
 <style lang="css">
     .view {
         transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        width: 100%;
     }
     
-    .navbar {
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    #app {
+        display: flex;
+        flex: 1;
+        flex-flow: column;
+        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+    }
+    
+    .page {
+        display: flex;
+        flex: 1;
+        flex-flow: column;
+        min-height: 100%;
+        max-height: 100%;
+    }
+    
+    .page header {
+        display: flex;
         height: 60px;
-        position: fixed;
-        right: 0;
-        left: 0;
-        z-index: 1030;
         box-shadow: 0 1px 4px rgba(0, 0, 0, .2), 0 1px 1px rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
     }
     
-    main {
+    .page main {
         padding: 10px;
-        padding-right: 20px;
+        flex: 1;
+        overflow: auto;
     }
     
     .navbar-menu {
