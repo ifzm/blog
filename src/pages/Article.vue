@@ -16,6 +16,10 @@
                     <checkbox disabled>网球</checkbox>
                 </div>
                 <div class="control-group">
+                    <radio v-model="sex" name="sex" values="1">男</radio>
+                    <radio v-model="sex" name="sex" values="0">女</radio>
+                </div>
+                <div class="control-group">
                     <button class="button success shadow" @click="save()">
                         保存
                     </button>
@@ -31,6 +35,7 @@
 <script>
     import Modal from '../components/Modal'
     import Checkbox from '../components/Checkbox'
+    import Radio from '../components/Radio'
 
     import NProgress from 'nprogress'
     import axios from 'axios'
@@ -48,10 +53,12 @@
     export default {
         components: {
             Checkbox,
-            Modal
+            Modal,
+            Radio
         },
         data() {
             return {
+                sex: 1,
                 title: '',
                 content: '',
                 processing: false
@@ -211,6 +218,12 @@
         min-width: 40px;
         min-height: 40px;
         border-radius: 50%;
+        padding: 0 8px;
+        color: white;
+    }
+    
+    .button.icon-button>i.icon {
+        font-size: 1.7em;
     }
     
     .post-create {

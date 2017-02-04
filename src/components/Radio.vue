@@ -1,17 +1,16 @@
 <template>
-    <label class="checkbox">
-        <div class="checkbox-container" :class="classes">
+    <label class="radio">
+        <div class="radio-container" :class="classes">
             <input
-                type="checkbox"
+                type="radio"
                 :id="id"
                 :name="name"
                 :value="value"
                 :disabled="disabled"
-                :checked="isCheck ? 'checked' : ''"
                 @change="toggle"
             >
         </div>
-        <span class="checkbox-text" v-if="$slots.default">
+        <span class="radio-text" v-if="$slots.default">
             <slot></slot>
         </span>
     </label>
@@ -23,113 +22,95 @@
             id: String,
             name: String,
             value: null,
+            values: null,
             class: String,
-            checked: Boolean,
             disabled: Boolean
-        },
-        data() {
-            return {
-                isCheck: this.checked
-            }
         },
         computed: {
             classes() {
                 return {
-                    checked: this.isCheck,
+                    checked: this.value && this.value.toString() === this.values.toString(),
                     disabled: this.disabled
                 }
             }
         },
         methods: {
             toggle(e) {
-                this.isCheck = e.target.checked
+                this.$emit('input', this.values, e)
             }
         }
     }
 </script>
 
 <style lang="css">
-    .checkbox {
+    .radio {
         width: auto;
         margin: 8px 8px 8px 0;
         display: inline-flex;
         position: relative;
     }
     
-    .checkbox-container {
+    .radio-container {
         width: 16px;
         height: 16px;
         position: relative;
         display: inline-block;
-        border-radius: 2px;
-        border: 2px solid rgba(0, 0, 0, .54);
-        transition: all .3s cubic-bezier(.25, .8, .25, 1);
-    }
-    
-    .checkbox-container:before {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
         border-radius: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        transition: all .4s cubic-bezier(.55, 0, .55, .2);
-        content: " ";
+        border: 2px solid rgba(0, 0, 0, .54);
+        transition: all .2s cubic-bezier(.25, .8, .25, 1);
     }
     
-    .checkbox-container:after {
-        width: 4px;
-        height: 9px;
+    .radio-container:after {
         position: absolute;
-        top: -1px;
+        top: 3px;
+        right: 3px;
+        bottom: 3px;
         left: 3px;
-        border: 2px solid #fff;
-        border-top: 0;
-        border-left: 0;
+        border-radius: 50%;
         opacity: 0;
-        transform: rotate(45deg) scale3D(.15, .15, 1);
-        transition: all .2s cubic-bezier(.55, 0, .55, .2);
+        transform: scale3D(0.38, 0.38, 1);
+        transition: all 0.2s cubic-bezier(0.55, 0, 0.55, 0.2);
         content: " ";
     }
     
-    .checkbox-container.checked {
-        background-color: #2196f3;
+    .radio-container.checked {
         border-color: #2196f3;
     }
     
-    .checkbox.success .checkbox-container.checked {
-        background-color: #5bb75b;
+    .radio-container.checked:after {
+        background-color: #2196f3;
+    }
+    
+    .radio.success .radio-container.checked {
         border-color: #5bb75b;
     }
     
-    .checkbox-container.disabled {
+    .radio-container.disabled {
         border-color: rgba(0, 0, 0, 0.26);
     }
     
-    .checkbox-container.checked.disabled {
+    .radio-container.checked.disabled {
         background-color: rgba(0, 0, 0, 0.26);
         border-color: transparent;
     }
     
-    .checkbox-container.checked:after {
+    .radio-container.checked:after {
         opacity: 1;
         transform: rotate(45deg) scale3D(1, 1, 1);
     }
     
-    .checkbox-container input {
+    .radio-container input {
         display: none;
     }
     
-    .checkbox-label {
+    .radio-label {
         height: 16px;
         line-height: 16px;
         padding-left: 8px;
         font-size: .9em;
     }
     
-    .checkbox-text {
+    .radio-text {
         display: inline-block;
         height: 16px;
         line-height: 16px;
@@ -137,7 +118,7 @@
         padding-left: 8px;
     }
     
-    .checkbox-container.disabled+.checkbox-text {
+    .radio-container.disabled+.radio-text {
         color: rgba(0, 0, 0, 0.26);
     }
 </style>

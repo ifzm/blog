@@ -10,7 +10,7 @@
         </div>
         <div class="page">
             <header>
-                <button class="button icon-button">菜单</button>
+                <button class="button icon-button" @click="showMenu"><i class="icon icon-menu"></i></button>
                 <ol class="shortcut">
                     <li :class="{ 'active': shortcut.active }" v-for="(shortcut, index) in shortcuts" @click.stop="shortcutClick(index)">
                         <router-link :to="shortcut.url">
