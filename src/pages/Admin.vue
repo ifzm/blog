@@ -10,23 +10,18 @@
         </div>
         <div class="page">
             <header>
-                <div class="navbar-info">
-                    <div class="log">
+                <button class="button icon-button">菜单</button>
+                <ol class="shortcut">
+                    <li :class="{ 'active': shortcut.active }" v-for="(shortcut, index) in shortcuts" @click.stop="shortcutClick(index)">
+                        <router-link :to="shortcut.url">
+                            <i class="icon" :class="shortcut.icon" v-if="shortcut.icon"></i>{{ shortcut.text }}
+                        </router-link>
+                    </li>
+                </ol>
+                <div class="info">
 
-                    </div>
-                    <ol class="shortcut">
-                        <li :class="{ 'active': shortcut.active }" v-for="(shortcut, index) in shortcuts" @click.stop="shortcutClick(index)">
-                            <router-link :to="shortcut.url">
-                                <i class="icon" :class="shortcut.icon" v-if="shortcut.icon"></i>{{ shortcut.text }}
-                            </router-link>
-                        </li>
-                    </ol>
-                    <div class="info">
-
-                    </div>
                 </div>
             </header>
-
             <main>
                 <ol class="breadcrumb" v-show="breadcrumbs.length > 1">
                     <li v-for="(item, index) in breadcrumbs" :class="{'active': index === breadcrumbs.length - 1}">
@@ -112,11 +107,19 @@
         z-index: 2;
         display: flex;
         height: 60px;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, .2), 0 1px 1px rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+        background-color: #2196f3;
+        color: white !important;
+        padding: 0 10px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        align-content: center;
     }
     
     .page main {
-        padding: 10px;
+        margin: 0 2px 2px 2px;
+        padding: 8px;
         flex: 1;
         overflow: auto;
     }
@@ -132,42 +135,35 @@
         overflow-y: auto;
     }
     
-    .navbar-info {
-        display: inline-flex;
-        position: absolute;
-        left: 220px;
-    }
-    
-    .navbar-info .shortcut li {
+    header .shortcut li {
         display: inline-block;
         position: relative;
-        color: #fff;
+        color: white;
     }
     
-    .navbar-info .shortcut li:after {
+    header .shortcut li:after {
         content: " ";
         width: 0;
         height: 3px;
-        background-color: #51a351;
+        background-color: white;
         position: absolute;
         left: 0;
         bottom: 0;
     }
     
-    .navbar-info .shortcut li.active:after {
+    header .shortcut li.active:after {
         width: 100%;
     }
     
-    .navbar-info .shortcut li a {
+    header .shortcut li a {
         display: inline-block;
         height: 60px;
         line-height: 60px;
         padding: 0 20px;
-        color: #555;
-        transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        color: white !important;
     }
     
-    .navbar-info .shortcut i.icon {
+    header .shortcut i.icon {
         vertical-align: middle;
         margin-right: 6px;
         font-size: 1.5em;

@@ -206,6 +206,13 @@
         background-color: #1e88e5;
     }
     
+    .button.icon-button {
+        width: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 50%;
+    }
+    
     .post-create {
         display: flex;
         flex-flow: row wrap;
@@ -220,5 +227,6 @@
     
     .create-right {
         border: 2px dashed #ccc;
+        padding: 10px;
     }
 </style>
