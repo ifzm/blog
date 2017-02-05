@@ -45,7 +45,7 @@
             open(options) {
                 Object.assign(this.options, options)
 
-                this.$root.$el.appendChild(this.$el)
+                this.$parent.$el.appendChild(this.$el)
 
                 setTimeout(() => {
                     this.active = true
@@ -55,11 +55,11 @@
                 this.$emit('open')
             },
             close(type) {
-                if (this.$root.$el.contains(this.$el)) {
+                if (this.$parent.$el.contains(this.$el)) {
                     this.active = false
 
                     setTimeout(() => {
-                        this.$root.$el.removeChild(this.$el)
+                        this.$parent.$el.removeChild(this.$el)
                     }, 400);
 
                     this.$emit('close', type)
