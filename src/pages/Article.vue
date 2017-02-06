@@ -20,6 +20,11 @@
                     <radio v-model="sex" name="sex" values="0">女</radio>
                 </div>
                 <div class="control-group">
+                    <m-switch checked>Default</m-switch>
+                    <m-switch class="success">Success</m-switch>
+                    <m-switch disabled>Disabled</m-switch>
+                </div>
+                <div class="control-group">
                     <button class="button success shadow" @click="save()">
                         保存
                     </button>
@@ -36,6 +41,7 @@
     import Modal from '../components/Modal'
     import Checkbox from '../components/Checkbox'
     import Radio from '../components/Radio'
+    import Switch from '../components/Switch'
 
     import NProgress from 'nprogress'
     import axios from 'axios'
@@ -54,7 +60,8 @@
         components: {
             Checkbox,
             Modal,
-            Radio
+            Radio,
+            MSwitch: Switch
         },
         data() {
             return {
