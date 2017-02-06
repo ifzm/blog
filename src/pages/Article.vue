@@ -18,6 +18,7 @@
                 <div class="control-group">
                     <radio v-model="sex" name="sex" values="1">男</radio>
                     <radio v-model="sex" name="sex" values="0">女</radio>
+                    <radio v-model="sex" name="sex" values="2" disabled>其他</radio>
                 </div>
                 <div class="control-group">
                     <m-switch checked>Default</m-switch>

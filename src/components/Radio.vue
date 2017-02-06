@@ -57,7 +57,7 @@
         display: inline-block;
         border-radius: 50%;
         border: 2px solid rgba(0, 0, 0, .54);
-        transition: all .2s cubic-bezier(.25, .8, .25, 1);
+        transition: all .3s cubic-bezier(.25, .8, .25, 1);
     }
     
     .radio-container:after {
@@ -69,7 +69,7 @@
         border-radius: 50%;
         opacity: 0;
         transform: scale3D(0.38, 0.38, 1);
-        transition: all 0.2s cubic-bezier(0.55, 0, 0.55, 0.2);
+        transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
         content: " ";
     }
     
