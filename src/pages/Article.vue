@@ -26,6 +26,9 @@
                     <m-switch disabled>Disabled</m-switch>
                 </div>
                 <div class="control-group">
+                    <m-select placeholder="请选择" :items="selectItems"></m-select>
+                </div>
+                <div class="control-group">
                     <button class="button success shadow" @click="save()">
                         保存
                     </button>
@@ -43,6 +46,7 @@
     import Checkbox from '../components/Checkbox'
     import Radio from '../components/Radio'
     import Switch from '../components/Switch'
+    import Select from '../components/Select'
 
     import NProgress from 'nprogress'
     import axios from 'axios'
@@ -62,14 +66,29 @@
             Checkbox,
             Modal,
             Radio,
-            MSwitch: Switch
+            MSwitch: Switch,
+            MSelect: Select
         },
         data() {
             return {
                 sex: 1,
                 title: '',
                 content: '',
-                processing: false
+                processing: false,
+                selectItems: [{
+                    text: 'GitHub',
+                    value: 'GitHub',
+                    icon: 'icon-github'
+                }, {
+                    text: 'Menu',
+                    value: 'Menu',
+                    icon: 'icon-menu',
+                    children: [{
+                        text: 'GitHub',
+                        value: 'GitHub',
+                        icon: 'icon-github'
+                    }]
+                }]
             }
         },
         computed: {
