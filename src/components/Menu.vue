@@ -1,6 +1,15 @@
 <template>
     <ul class="menu">
-        <item v-for="item in items" :value="item.value" :selected="~values.indexOf(item.value)">{{ item.text }}</item>
+        <item v-for="item in items" :item="item" :selected="values.indexOf(item.value) !== -1" @select="select">
+            <m-menu 
+                :items="item.children" 
+                :values="values"
+                v-if="item.children" 
+                v-show="item.open" 
+                class="sub" 
+                @select="select">
+            </m-menu>
+        </item>
         <slot v-if="!items"></slot>
     </ul>
 </template>
@@ -9,17 +18,22 @@
     import Item from './Item'
 
     export default {
-        name: 'menu',
+        name: 'm-menu',
         components: {
             Item
         },
         props: {
             items: Array,
-            style: String
+            style: String,
+            class: String,
+            values: {
+                type: Array,
+                default: () => []
+            }
         },
         data() {
             return {
-
+                showSubMenu: false
             }
         },
         methods: {
@@ -34,8 +48,13 @@
     .menu {
         z-index: 2;
         position: absolute;
-        border-radius: 2px;
         background-color: white;
+        box-shadow: 3px 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
+    }
+    
+    .menu.sub {
+        top: 0;
+        left: 150px;
         box-shadow: 3px 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
     }
 </style>

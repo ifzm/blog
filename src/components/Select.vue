@@ -3,10 +3,15 @@
         <button class="select-container" :class="classes" @click="toggle">
             <span class="select-placeholder">{{ placeholder }}</span>
             <span class="select-selectedItems">{{ selectedItems }}</span>
+            <i class="icon icon-xiangxia-copy"></i>
         </button>
-        <m-menu @select="select" v-show="showMenu" v-if="items" :style="menuStyle">
-            <item v-for="item in items" :item="item" :selected="values.indexOf(item.value) !== -1"></item>
-            <slot v-if="!items"></slot>
+        <m-menu 
+            @select="select"
+            :items="items" 
+            :values="values"
+            :style="menuStyle"
+            v-show="showMenu" 
+            v-if="items">
         </m-menu>
     </div>
 </template>
@@ -78,15 +83,22 @@
     .select .select-container {
         cursor: pointer;
         height: 30px;
-        line-height: 30px;
         padding: 0 10px;
         border: 0;
         border-radius: 2px;
         background: white;
         transition: all .4s cubic-bezier(.25, .8, .25, 1);
+        display: flex;
+        flex: 1;
+        flex-flow: row;
+        align-items: center;
     }
     
     .select .select-container.active {
         background: #bdbdbd;
+    }
+    
+    .select .select-container .icon {
+        margin-left: 10px;
     }
 </style>

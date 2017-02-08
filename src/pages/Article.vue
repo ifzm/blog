@@ -9,6 +9,9 @@
                     <textarea placeholder="内容" v-model="content" spellcheck="false"></textarea>
                 </div>
                 <div class="control-group">
+                    <m-select placeholder="请选择" :items="selectItems"></m-select>
+                </div>
+                <div class="control-group">
                     <checkbox checked class="success">足球</checkbox>
                     <checkbox checked>篮球</checkbox>
                     <checkbox>棒球</checkbox>
@@ -24,9 +27,6 @@
                     <m-switch checked>Default</m-switch>
                     <m-switch class="success">Success</m-switch>
                     <m-switch disabled>Disabled</m-switch>
-                </div>
-                <div class="control-group">
-                    <m-select placeholder="请选择" :items="selectItems"></m-select>
                 </div>
                 <div class="control-group">
                     <button class="button success shadow" @click="save()">
@@ -80,13 +80,22 @@
                     value: 'GitHub',
                     icon: 'icon-github'
                 }, {
-                    text: 'Menu',
-                    value: 'Menu',
+                    text: 'MENU',
+                    value: 'MENU',
                     icon: 'icon-menu',
                     children: [{
                         text: 'GitHub',
                         value: 'GitHub',
                         icon: 'icon-github'
+                    }, {
+                        text: 'MENU',
+                        value: 'MENU',
+                        icon: 'icon-menu',
+                        children: [{
+                            text: 'GitHub',
+                            value: 'GitHub',
+                            icon: 'icon-github'
+                        }]
                     }]
                 }]
             }
