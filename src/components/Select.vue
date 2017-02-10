@@ -20,12 +20,10 @@
 
 <script>
     import Menu from './Menu'
-    import Item from './Item'
 
     export default {
         components: {
-            MMenu: Menu,
-            Item
+            MMenu: Menu
         },
         props: {
             items: Array,
@@ -60,7 +58,8 @@
             },
             select(values) {
                 if (!this.multiple) {
-                    this.$refs.selectMenu.toggle()
+                    this.active = false
+                    this.$refs.selectMenu.toggle(false)
                 }
                 this.checkValues = values
             }
@@ -72,6 +71,7 @@
     .select {
         position: relative;
         display: inline-block;
+        margin: 8px 8px 8px 0;
         box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
     }
     

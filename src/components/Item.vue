@@ -1,5 +1,5 @@
 <template>
-    <li class="item" @click.prevent="check(value || item.value)" @mouseenter="mouseenter" @mouseleave="mouseleave">
+    <li class="item" @click.stop="check(value || item.value)" @mouseenter="mouseenter" @mouseleave="mouseleave">
         <i class="icon item-icon" :class="item.icon" v-if="item && item.icon"></i>
         <span class="item-text">
             {{ item && item.text }}

@@ -1,13 +1,12 @@
 <template>
-    <ul class="menu" v-show="show">
+    <ul class="menu" v-show="active">
         <item v-for="item in items" :item="item" :selected="checkValues.indexOf(item.value) !== -1" @select="select">
             <m-menu
                 :items="item.children"
                 :values="checkValues"
                 :multiple="multiple"
                 v-if="item.children"
-                v-show="item.open"
-                class="sub">
+                v-show="item.open">
             </m-menu>
         </item>
         <slot v-if="!items"></slot>
@@ -15,7 +14,7 @@
 </template>
 
 <script>
-    import clickoutside from '../utils/clickoutside'
+    import Utils from '../utils'
     import Item from './Item'
 
     export default {
@@ -35,15 +34,15 @@
         },
         data() {
             return {
-                show: false,
+                active: false,
                 showSubMenu: false,
                 checkValues: this.values
             }
         },
         methods: {
             toggle(show) {
-                this.show = show === false ? false : !this.show
-                clickoutside.call(this, this.show, e => {
+                this.active = show === false ? false : !this.active
+                Utils.clickoutside.call(this, this.active, e => {
                     this.$emit('toggle', false)
                 })
             },
@@ -52,9 +51,11 @@
                     let index = this.checkValues.indexOf(value)
                     index === -1 ? this.checkValues.push(value) : this.checkValues.splice(index, 1)
                 } else {
-                    this.checkValues = []
+                    this.checkValues.splice(0, 1)
                     this.checkValues.push(value)
+                    Utils.clickoutside()
                 }
+
                 this.$emit('select', this.checkValues)
             }
         }
@@ -69,7 +70,7 @@
         box-shadow: 3px 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
     }
     
-    .menu.sub {
+    .menu .menu {
         top: 0;
         left: 150px;
         box-shadow: 3px 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);

@@ -10,8 +10,7 @@
                 </div>
                 <div class="control-group">
                     <m-select :items="selectItems" multiple></m-select>
-                    <m-select :items="selectItems" multiple></m-select>
-                    <m-select :items="selectItems" multiple></m-select>
+                    <m-select :items="selectItems"></m-select>
                 </div>
                 <div class="control-group">
                     <checkbox checked class="success">足球</checkbox>
@@ -88,6 +87,10 @@
                     children: [{
                         text: 'GitHub2',
                         value: 'GitHub2',
+                        icon: 'icon-github'
+                    }, {
+                        text: 'GitHub5',
+                        value: 'GitHub5',
                         icon: 'icon-github'
                     }, {
                         text: 'MENU2',
