@@ -5,11 +5,11 @@
             <span class="select-selectedItems" v-show="selectedItems">{{ selectedItems }}</span>
             <i class="icon icon-xiangxia-copy"></i>
         </button>
-        <m-menu 
+        <m-menu
             ref="selectMenu"
             @select="select"
             @toggle="toggle"
-            :items="items" 
+            :items="items"
             :values="checkValues"
             :style="menuStyle"
             :multiple="multiple"
@@ -54,9 +54,9 @@
             }
         },
         methods: {
-            toggle() {
-                this.active = !this.active
-                this.$refs.selectMenu.toggle()
+            toggle(show) {
+                this.active = show === false ? false : !this.active
+                this.$refs.selectMenu.toggle(show)
             },
             select(values) {
                 if (!this.multiple) {
@@ -76,6 +76,10 @@
     }
     
     .select .select-container {
+        display: flex;
+        flex: 1;
+        flex-flow: row;
+        align-items: center;
         cursor: pointer;
         height: 30px;
         padding: 0 10px;
@@ -83,10 +87,6 @@
         border-radius: 2px;
         background: white;
         transition: all .4s cubic-bezier(.25, .8, .25, 1);
-        display: flex;
-        flex: 1;
-        flex-flow: row;
-        align-items: center;
     }
     
     .select .select-container.active {

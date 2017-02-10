@@ -1,12 +1,12 @@
 <template>
     <ul class="menu" v-show="show">
         <item v-for="item in items" :item="item" :selected="checkValues.indexOf(item.value) !== -1" @select="select">
-            <m-menu 
-                :items="item.children" 
+            <m-menu
+                :items="item.children"
                 :values="checkValues"
                 :multiple="multiple"
-                v-if="item.children" 
-                v-show="item.open" 
+                v-if="item.children"
+                v-show="item.open"
                 class="sub">
             </m-menu>
         </item>
@@ -41,9 +41,11 @@
             }
         },
         methods: {
-            toggle() {
-                this.show = !this.show
-                clickoutside.call(this, 'show', 'toggle')
+            toggle(show) {
+                this.show = show === false ? false : !this.show
+                clickoutside.call(this, this.show, e => {
+                    this.$emit('toggle', false)
+                })
             },
             select(value) {
                 if (this.multiple) {

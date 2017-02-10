@@ -1,13 +1,13 @@
-export default function(mark, $emit) {
+export default function(flag, callback) {
     setTimeout(() => {
-        if (this[mark]) {
-            document.onclick = e => {
+        if (flag) {
+            const hander = e => {
                 if (!this.$el.contains(e.target)) {
-                    this.$emit($emit)
+                    callback && callback.call(this, e)
+                    document.removeEventListener('click', hander)
                 }
             }
-        } else {
-            document.onclick = null
+            document.addEventListener('click', hander, false)
         }
     })
 }

@@ -10,6 +10,8 @@
                 </div>
                 <div class="control-group">
                     <m-select :items="selectItems" multiple></m-select>
+                    <m-select :items="selectItems" multiple></m-select>
+                    <m-select :items="selectItems" multiple></m-select>
                 </div>
                 <div class="control-group">
                     <checkbox checked class="success">足球</checkbox>
