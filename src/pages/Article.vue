@@ -109,11 +109,11 @@
                 menuItems: [{
                     text: 'Copy',
                     value: 'Copy',
-                    icon: 'icon-github'
+                    icon: 'icon-copy1'
                 }, {
                     text: 'Paste',
                     value: 'Paste',
-                    icon: 'icon-github'
+                    icon: 'icon-paste'
                 }],
                 menuStyle: ''
             }
