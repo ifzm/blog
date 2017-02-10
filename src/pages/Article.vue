@@ -6,7 +6,8 @@
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
                 <div class="control-group">
-                    <textarea placeholder="内容" v-model="content" spellcheck="false"></textarea>
+                    <textarea placeholder="内容" v-model="content" spellcheck="false" @contextmenu="showRightMenu"></textarea>
+                    <m-menu ref="rightMenu" :items="menuItems" :style="menuStyle" @toggle="toggle"></m-menu>
                 </div>
                 <div class="control-group">
                     <m-select :items="selectItems" multiple></m-select>
@@ -48,6 +49,7 @@
     import Radio from '../components/Radio'
     import Switch from '../components/Switch'
     import Select from '../components/Select'
+    import Menu from '../components/Menu'
 
     import NProgress from 'nprogress'
     import axios from 'axios'
@@ -68,7 +70,8 @@
             Modal,
             Radio,
             MSwitch: Switch,
-            MSelect: Select
+            MSelect: Select,
+            MMenu: Menu
         },
         data() {
             return {
@@ -102,7 +105,17 @@
                             icon: 'icon-github'
                         }]
                     }]
-                }]
+                }],
+                menuItems: [{
+                    text: 'Copy',
+                    value: 'Copy',
+                    icon: 'icon-github'
+                }, {
+                    text: 'Paste',
+                    value: 'Paste',
+                    icon: 'icon-github'
+                }],
+                menuStyle: ''
             }
         },
         computed: {
@@ -111,6 +124,13 @@
             }
         },
         methods: {
+            toggle(show) {
+                this.$refs.rightMenu.toggle(show)
+            },
+            showRightMenu(e) {
+                this.menuStyle = `left: ${e.clientX}px; top: ${e.clientY}px;`
+                this.$refs.rightMenu.toggle(true)
+            },
             close(type) {
                 // alert(type)
             },

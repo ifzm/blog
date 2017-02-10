@@ -27,6 +27,7 @@
             style: String,
             class: String,
             multiple: Boolean,
+            params: null,
             values: {
                 type: Array,
                 default: () => []
@@ -41,9 +42,9 @@
         },
         methods: {
             toggle(show) {
-                this.active = show === false ? false : !this.active
+                this.active = show !== undefined ? show : !this.active
                 Utils.clickoutside.call(this, this.active, e => {
-                    this.$emit('toggle', false)
+                    this.$emit('toggle', null, false)
                 })
             },
             select(value) {
@@ -51,12 +52,12 @@
                     let index = this.checkValues.indexOf(value)
                     index === -1 ? this.checkValues.push(value) : this.checkValues.splice(index, 1)
                 } else {
-                    this.checkValues.splice(0, 1)
+                    this.checkValues.splice(0, this.checkValues.length)
                     this.checkValues.push(value)
                     Utils.clickoutside()
                 }
 
-                this.$emit('select', this.checkValues)
+                this.$emit('select', this.checkValues, this.params)
             }
         }
     }

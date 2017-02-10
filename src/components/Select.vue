@@ -13,6 +13,7 @@
             :values="checkValues"
             :style="menuStyle"
             :multiple="multiple"
+            params="1"
             v-if="items">
         </m-menu>
     </div>
@@ -52,11 +53,11 @@
             }
         },
         methods: {
-            toggle(show) {
+            toggle(e, show) {
                 this.active = show === false ? false : !this.active
                 this.$refs.selectMenu.toggle(show)
             },
-            select(values) {
+            select(values, params) {
                 if (!this.multiple) {
                     this.active = false
                     this.$refs.selectMenu.toggle(false)
