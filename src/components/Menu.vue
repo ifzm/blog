@@ -1,13 +1,13 @@
 <template>
-    <ul class="menu">
-        <item v-for="item in items" :item="item" :selected="values.indexOf(item.value) !== -1" @select="select">
+    <ul class="menu" v-show="show">
+        <item v-for="item in items" :item="item" :selected="checkValues.indexOf(item.value) !== -1" @select="select">
             <m-menu 
                 :items="item.children" 
-                :values="values"
+                :values="checkValues"
+                :multiple="multiple"
                 v-if="item.children" 
                 v-show="item.open" 
-                class="sub" 
-                @select="select">
+                class="sub">
             </m-menu>
         </item>
         <slot v-if="!items"></slot>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    import clickoutside from '../utils/clickoutside'
     import Item from './Item'
 
     export default {
@@ -26,6 +27,7 @@
             items: Array,
             style: String,
             class: String,
+            multiple: Boolean,
             values: {
                 type: Array,
                 default: () => []
@@ -33,12 +35,25 @@
         },
         data() {
             return {
-                showSubMenu: false
+                show: false,
+                showSubMenu: false,
+                checkValues: this.values
             }
         },
         methods: {
+            toggle() {
+                this.show = !this.show
+                clickoutside.call(this, 'show', 'toggle')
+            },
             select(value) {
-                this.$emit('select', value)
+                if (this.multiple) {
+                    let index = this.checkValues.indexOf(value)
+                    index === -1 ? this.checkValues.push(value) : this.checkValues.splice(index, 1)
+                } else {
+                    this.checkValues = []
+                    this.checkValues.push(value)
+                }
+                this.$emit('select', this.checkValues)
             }
         }
     }

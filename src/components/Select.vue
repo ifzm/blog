@@ -1,16 +1,18 @@
 <template>
     <div class="select">
-        <button class="select-container" :class="classes" @click="toggle">
-            <span class="select-placeholder">{{ placeholder }}</span>
-            <span class="select-selectedItems">{{ selectedItems }}</span>
+        <button class="select-container" :class="{'active': active}" @click="toggle">
+            <span class="select-placeholder" v-show="!selectedItems">{{ placeholder }}</span>
+            <span class="select-selectedItems" v-show="selectedItems">{{ selectedItems }}</span>
             <i class="icon icon-xiangxia-copy"></i>
         </button>
         <m-menu 
+            ref="selectMenu"
             @select="select"
+            @toggle="toggle"
             :items="items" 
-            :values="values"
+            :values="checkValues"
             :style="menuStyle"
-            v-show="showMenu" 
+            :multiple="multiple"
             v-if="items">
         </m-menu>
     </div>
@@ -27,47 +29,40 @@
         },
         props: {
             items: Array,
+            multiple: Boolean,
             values: {
                 type: Array,
                 default: () => []
             },
-            multiple: Boolean,
             placeholder: {
                 type: String,
-                default: 'Nothing Selected'
+                default: '请选择'
             }
         },
         data() {
             return {
-                showMenu: false
+                active: false,
+                checkValues: this.values
             }
         },
         computed: {
-            classes() {
-                return {
-                    active: this.showMenu
-                }
-            },
             menuStyle() {
                 return `left: 0; top: 34px;`
             },
             selectedItems() {
-                return this.values.join(', ')
+                return this.checkValues.join(', ')
             }
         },
         methods: {
             toggle() {
-                this.showMenu = !this.showMenu
+                this.active = !this.active
+                this.$refs.selectMenu.toggle()
             },
-            select(value) {
-                if (this.multiple) {
-                    let index = this.values.indexOf(vlaue)
-                    index === -1 ? this.values.push(value) : this.values.splice(index, 1)
-                } else {
-                    this.values = []
-                    this.values.push(value)
-                    this.showMenu = false
+            select(values) {
+                if (!this.multiple) {
+                    this.$refs.selectMenu.toggle()
                 }
+                this.checkValues = values
             }
         }
     }

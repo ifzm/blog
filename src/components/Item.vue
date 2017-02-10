@@ -1,5 +1,5 @@
 <template>
-    <li class="item" @click.prevent="select(value || item.value)" @mouseenter="mouseenter" @mouseleave="mouseleave">
+    <li class="item" @click.prevent="check(value || item.value)" @mouseenter="mouseenter" @mouseleave="mouseleave">
         <i class="icon item-icon" :class="item.icon" v-if="item && item.icon"></i>
         <span class="item-text">
             {{ item && item.text }}
@@ -24,7 +24,7 @@
         },
         computed: {
             iconCheckStyle() {
-                return 'visibility: ' + (this.checked ? 'visible' : 'hidden')
+                return 'visibility: ' + (this.selected || this.checked ? 'visible' : 'hidden')
             }
         },
         mounted() {
@@ -34,11 +34,13 @@
             }
         },
         methods: {
-            select(value) {
+            check(value) {
                 if (this.$children.length === 0) {
-                    this.checked = !this.checked
-                    this.$emit('select', value)
+                    this.select(value)
                 }
+            },
+            select(value) {
+                this.$emit('select', value)
             },
             mouseenter(e) {
                 this.$set(this.item, 'open', true)

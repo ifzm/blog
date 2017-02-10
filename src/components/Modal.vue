@@ -43,7 +43,7 @@
         },
         methods: {
             open(options) {
-                Object.assign(this.options, options)
+                Object.assign(this.options, options || {})
 
                 this.$parent.$el.appendChild(this.$el)
 

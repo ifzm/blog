@@ -9,7 +9,7 @@
                     <textarea placeholder="内容" v-model="content" spellcheck="false"></textarea>
                 </div>
                 <div class="control-group">
-                    <m-select placeholder="请选择" :items="selectItems"></m-select>
+                    <m-select :items="selectItems" multiple></m-select>
                 </div>
                 <div class="control-group">
                     <checkbox checked class="success">足球</checkbox>
@@ -76,24 +76,24 @@
                 content: '',
                 processing: false,
                 selectItems: [{
-                    text: 'GitHub',
-                    value: 'GitHub',
+                    text: 'GitHub1',
+                    value: 'GitHub1',
                     icon: 'icon-github'
                 }, {
-                    text: 'MENU',
-                    value: 'MENU',
+                    text: 'MENU1',
+                    value: 'MENU1',
                     icon: 'icon-menu',
                     children: [{
-                        text: 'GitHub',
-                        value: 'GitHub',
+                        text: 'GitHub2',
+                        value: 'GitHub2',
                         icon: 'icon-github'
                     }, {
-                        text: 'MENU',
-                        value: 'MENU',
+                        text: 'MENU2',
+                        value: 'MENU2',
                         icon: 'icon-menu',
                         children: [{
-                            text: 'GitHub',
-                            value: 'GitHub',
+                            text: 'GitHub3',
+                            value: 'GitHub3',
                             icon: 'icon-github'
                         }]
                     }]
