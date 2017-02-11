@@ -125,6 +125,7 @@
         },
         methods: {
             toggle(show) {
+                console.log(111)
                 this.$refs.rightMenu.toggle(show)
             },
             showRightMenu(e) {

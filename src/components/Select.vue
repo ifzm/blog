@@ -13,7 +13,7 @@
             :values="checkValues"
             :style="menuStyle"
             :multiple="multiple"
-            params="1"
+            showCheckIcon
             v-if="items">
         </m-menu>
     </div>

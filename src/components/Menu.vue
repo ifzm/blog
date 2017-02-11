@@ -1,10 +1,16 @@
 <template>
     <ul class="menu" v-show="active">
-        <item v-for="item in items" :item="item" :selected="checkValues.indexOf(item.value) !== -1" @select="select">
+        <item
+            v-for="item in items"
+            @select="select"
+            :item="item"
+            :selected="checkValues.indexOf(item.value) !== -1"
+            :showCheckIcon="showCheckIcon">
             <m-menu
                 :items="item.children"
                 :values="checkValues"
                 :multiple="multiple"
+                :showCheckIcon="showCheckIcon"
                 v-if="item.children"
                 v-show="item.open">
             </m-menu>
@@ -28,6 +34,7 @@
             class: String,
             multiple: Boolean,
             params: null,
+            showCheckIcon: Boolean,
             values: {
                 type: Array,
                 default: () => []

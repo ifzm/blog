@@ -5,7 +5,7 @@
             {{ item && item.text }}
             <slot></slot>
         </span>
-        <i class="icon" :class="icon" :style="iconCheckStyle"></i>
+        <i class="icon" :class="icon" :style="iconCheckStyle" v-if="showCheckIcon"></i>
     </li>
 </template>
 
@@ -14,6 +14,7 @@
         props: {
             item: Object,
             value: null,
+            showCheckIcon: Boolean,
             selected: Boolean
         },
         data() {
@@ -64,10 +65,12 @@
         flex-flow: row;
         justify-content: space-between;
         position: relative;
+        background-color: white;
+        transition: all .3s cubic-bezier(.25, .8, .25, 1);
     }
     
     .item:hover {
-        background-color: #f4f4f4;
+        background-color: #ececec;
     }
     
     .item .item-text {
