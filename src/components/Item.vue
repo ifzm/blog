@@ -1,11 +1,11 @@
 <template>
     <li class="item" @click.stop="check(value || item.value)" @mouseenter="mouseenter" @mouseleave="mouseleave">
-        <i class="icon item-icon" :class="item.icon" v-if="item && item.icon"></i>
+        <i class="item-icon" :class="iconClass"></i>
         <span class="item-text">
             {{ item && item.text }}
             <slot></slot>
         </span>
-        <i class="icon" :class="icon" :style="iconCheckStyle" v-if="showCheckIcon"></i>
+        <i class="icon icon-check" :class="icon" :style="iconCheckStyle" v-if="showCheckIcon"></i>
     </li>
 </template>
 
@@ -24,6 +24,9 @@
             }
         },
         computed: {
+            iconClass() {
+                return this.item.icon ? 'icon ' + this.item.icon : ''
+            },
             iconCheckStyle() {
                 return 'visibility: ' + (this.selected || this.checked ? 'visible' : 'hidden')
             }
@@ -76,7 +79,15 @@
     .item .item-text {
         overflow: hidden;
         margin: 0 8px;
-        flex: 99;
         line-height: 26px;
+        flex-grow: 1;
+    }
+    
+    .item .icon {
+        flex-basis: 16px;
+    }
+    
+    .item+.item>.item-icon {
+        flex-basis: 16px;
     }
 </style>

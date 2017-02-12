@@ -35,6 +35,7 @@
             multiple: Boolean,
             params: null,
             showCheckIcon: Boolean,
+            clickoutside: Function,
             values: {
                 type: Array,
                 default: () => []
@@ -51,7 +52,8 @@
             toggle(show) {
                 this.active = show !== undefined ? show : !this.active
                 Utils.clickoutside.call(this, this.active, e => {
-                    this.$emit('toggle', null, false)
+                    this.clickoutside && this.clickoutside()
+                    this.active = false
                 })
             },
             select(value) {

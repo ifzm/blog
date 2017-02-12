@@ -8,7 +8,7 @@
         <m-menu
             ref="selectMenu"
             @select="select"
-            @toggle="toggle"
+            :clickoutside="clickoutside"
             :items="items"
             :values="checkValues"
             :style="menuStyle"
@@ -53,9 +53,12 @@
             }
         },
         methods: {
-            toggle(e, show) {
-                this.active = show === false ? false : !this.active
-                this.$refs.selectMenu.toggle(show)
+            clickoutside() {
+                this.active = false
+            },
+            toggle() {
+                this.active = !this.active
+                this.$refs.selectMenu.toggle()
             },
             select(values, params) {
                 if (!this.multiple) {

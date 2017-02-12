@@ -7,7 +7,7 @@
                 </div>
                 <div class="control-group">
                     <textarea placeholder="内容" v-model="content" spellcheck="false" @contextmenu="showRightMenu"></textarea>
-                    <m-menu ref="rightMenu" :items="menuItems" :style="menuStyle" @toggle="toggle"></m-menu>
+                    <m-menu ref="rightMenu" :items="menuItems" :style="menuStyle"></m-menu>
                 </div>
                 <div class="control-group">
                     <m-select :items="selectItems" multiple></m-select>
@@ -93,8 +93,7 @@
                         icon: 'icon-github'
                     }, {
                         text: 'GitHub5',
-                        value: 'GitHub5',
-                        icon: 'icon-github'
+                        value: 'GitHub5'
                     }, {
                         text: 'MENU2',
                         value: 'MENU2',
@@ -108,12 +107,10 @@
                 }],
                 menuItems: [{
                     text: 'Copy',
-                    value: 'Copy',
-                    icon: 'icon-copy1'
+                    value: 'Copy'
                 }, {
                     text: 'Paste',
-                    value: 'Paste',
-                    icon: 'icon-paste'
+                    value: 'Paste'
                 }],
                 menuStyle: ''
             }
@@ -124,10 +121,6 @@
             }
         },
         methods: {
-            toggle(show) {
-                console.log(111)
-                this.$refs.rightMenu.toggle(show)
-            },
             showRightMenu(e) {
                 this.menuStyle = `left: ${e.clientX}px; top: ${e.clientY}px;`
                 this.$refs.rightMenu.toggle(true)

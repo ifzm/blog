@@ -28,6 +28,35 @@
             border: 1px solid #ccc;
             height: 100%;
             overflow: auto;
+            padding: 20px;
+        }
+        
+        .item {
+            display: flex;
+            flex: 1;
+            flex-flow: row;
+            border: 2px dashed #ccc;
+            margin-bottom: 10px;
+        }
+        
+        .item span {
+            height: 50px;
+            line-height: 50px;
+            margin: 10px;
+            background-color: #ccc;
+        }
+        
+        .item .sub.icon {
+            flex-basis: 50px;
+        }
+        
+        .item .sub-text {
+            flex-grow: 1;
+        }
+        
+        .item+.item>.icon {
+            flex-basis: 50px;
+            margin: 10px;
         }
     </style>
 </head>
@@ -37,16 +66,21 @@
         <main>
             <header></header>
             <div class="content">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
+                <div class="item">
+                    <span class="sub"></span>
+                    <span class="sub-text"></span>
+                    <span class="icon sub"></span>
+                </div>
+                <div class="item">
+                    <i class="icon"></i>
+                    <span class="sub-text"></span>
+                    <span class="icon sub"></span>
+                </div>
+                <div class="item">
+                    <span class="icon sub"></span>
+                    <span class="sub-text"></span>
+                    <span class="icon sub"></span>
+                </div>
             </div>
         </main>
     </div>
