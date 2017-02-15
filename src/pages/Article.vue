@@ -88,7 +88,7 @@
                     value: 'MENU1',
                     icon: 'icon-menu',
                     children: [{
-                        text: 'GitHub2',
+                        text: 'GitHub2GitHub2GitHub2GitHub2GitHub2GitHub2GitHub2',
                         value: 'GitHub2',
                         icon: 'icon-github'
                     }, {
@@ -110,7 +110,8 @@
                     value: 'Copy'
                 }, {
                     text: 'Paste',
-                    value: 'Paste'
+                    value: 'Paste',
+                    icon: 'icon-paste'
                 }],
                 menuStyle: ''
             }
@@ -289,12 +290,14 @@
     
     .create-left,
     .create-right {
-        flex: 1 1 calc(50% - 10px);
+        flex-basis: calc(50% - 10px);
         margin-right: 10px;
     }
     
     .create-right {
         border: 2px dashed #ccc;
         padding: 10px;
+        word-wrap: break-word;
+        word-break: break-all;
     }
 </style>

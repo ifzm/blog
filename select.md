@@ -32,3 +32,16 @@ https://item.jd.com/4210490.html
 
 - 联想-天逸 i5低耗 8G 普通屏 4099
 https://item.jd.com/3595669.html
+
+
+
+
+
+```flow
+st=>start: Start
+e=>end: End
+op1=>operation: My Operation
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes or No?
+io=>inputoutput: catch something...
+```

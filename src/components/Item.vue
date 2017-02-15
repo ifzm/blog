@@ -18,6 +18,10 @@
             selected: Boolean
         },
         data() {
+            if (this.item.icon) {
+                this.$parent.hasIcon = true
+            }
+
             return {
                 checked: this.selected,
                 icon: 'icon-check'
@@ -47,10 +51,14 @@
                 this.$emit('select', value)
             },
             mouseenter(e) {
-                this.$set(this.item, 'open', true)
+                if (this.$children.length > 0) {
+                    this.$set(this.item, 'open', true)
+                }
             },
             mouseleave(e) {
-                this.$set(this.item, 'open', false)
+                if (this.$children.length > 0) {
+                    this.$set(this.item, 'open', false)
+                }
             }
         }
     }
@@ -69,7 +77,7 @@
         justify-content: space-between;
         position: relative;
         background-color: white;
-        transition: all .3s cubic-bezier(.25, .8, .25, 1);
+        transition: all .5s;
     }
     
     .item:hover {
@@ -84,10 +92,6 @@
     }
     
     .item .icon {
-        flex-basis: 16px;
-    }
-    
-    .item+.item>.item-icon {
         flex-basis: 16px;
     }
 </style>
