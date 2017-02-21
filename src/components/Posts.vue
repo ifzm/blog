@@ -55,17 +55,15 @@
             fetchData() {
                 this.err = this.post = null
 
-                NProgress.start()
-                axios.get('post')
+                axios.start()
+                    .get('post')
                     .then(res => {
                         this.posts = res.data
                     })
                     .catch(err => {
                         this.err = err
                     })
-                    .then(() => {
-                        NProgress.done()
-                    })
+                    .done()
             }
         }
     }

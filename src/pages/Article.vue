@@ -130,20 +130,17 @@
                 // alert(type)
             },
             save() {
-                this.$refs.dialog.open({
-                    title: '🚀Post created!',
-                    content: '&#x1F469;⚡️🚴Your post <strong>Material Design is awesome</strong> has been created.',
-                    confirm: '确认',
-                    cancel: '取消'
-                })
+                // this.$refs.dialog.open({
+                //     title: '🚀Post created!',
+                //     content: '&#x1F469;⚡️🚴Your post <strong>Material Design is awesome</strong> has been created.',
+                //     confirm: '确认',
+                //     cancel: '取消'
+                // })
 
-                return
+                // return
 
-                if (this.processing) return
-                this.processing = true
-
-                NProgress.start()
-                axios.post('post', {
+                axios.start()
+                    .post('post', {
                         title: this.title,
                         content: this.content
                     })
@@ -153,10 +150,7 @@
                     .catch(err => {
                         this.err = err
                     })
-                    .then(() => {
-                        NProgress.done()
-                        this.processing = false
-                    })
+                    .done()
             }
         }
     }
