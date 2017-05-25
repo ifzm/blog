@@ -25,5 +25,26 @@ export default {
                 }
             })
         }
+    },
+    /**
+     * 在光标处插入字符串
+     * 
+     * document.addEventListener('keydown', e => {
+     *     let key = e.keyCode
+     *     if (key === 9 && window.getSelection) {
+     *         e.preventDefault()
+     *         insertAtCursor.call(this, '  ')
+     *     }
+     * }, false)
+     * 
+     * @param {string} str 需要插入的字符串
+     */
+    insertAtCursor(str) {
+        let start = this.selectionStart,
+            end = this.selectionEnd,
+            offset = start + str.length
+
+        this.value = this.value.substring(0, start) + str + this.value.substring(end)
+        this.setSelectionRange(offset, offset)
     }
 }
