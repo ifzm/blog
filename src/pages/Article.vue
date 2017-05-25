@@ -6,7 +6,7 @@
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
                 <div class="control-group">
-                    <textarea placeholder="内容" v-model="content" spellcheck="false" @contextmenu="showRightMenu"></textarea>
+                    <textarea placeholder="内容" v-model="content" spellcheck="false" @contextmenu="showRightMenu" @keydown.prevent.tab="tab"></textarea>
                     <m-menu ref="rightMenu" :items="menuItems" :style="menuStyle"></m-menu>
                 </div>
                 <div class="control-group">
@@ -55,6 +55,7 @@
     import axios from 'axios'
     import marked from 'marked'
     import hljs from 'highlight.js'
+    import Utils from '../utils'
 
 
     marked.setOptions({
@@ -122,6 +123,9 @@
             }
         },
         methods: {
+            tab(e) {
+                Utils.insertAtCursor.call(e.currentTarget, '  ')
+            },
             showRightMenu(e) {
                 this.menuStyle = `left: ${e.clientX}px; top: ${e.clientY}px;`
                 this.$refs.rightMenu.toggle(true)
