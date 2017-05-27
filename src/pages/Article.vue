@@ -6,8 +6,7 @@
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
                 <div class="control-group">
-                    <textarea placeholder="内容" v-model="content" spellcheck="false" @contextmenu="showRightMenu" @keydown.prevent.tab="tab"></textarea>
-                    <m-menu ref="rightMenu" :items="menuItems" :style="menuStyle"></m-menu>
+                    <editor v-model="content" :rightMenus="menuItems"></editor>
                 </div>
                 <div class="control-group">
                     <m-select :items="selectItems" multiple></m-select>
@@ -50,6 +49,7 @@
     import Switch from '../components/Switch'
     import Select from '../components/Select'
     import Menu from '../components/Menu'
+    import Editor from '../components/Editor'
 
     import NProgress from 'nprogress'
     import axios from 'axios'
@@ -70,6 +70,7 @@
             Checkbox,
             Modal,
             Radio,
+            Editor,
             MSwitch: Switch,
             MSelect: Select,
             MMenu: Menu
@@ -182,6 +183,7 @@
     
     .form textarea {
         min-height: 220px;
+        overflow-x: hidden;
     }
     
     input:focus,

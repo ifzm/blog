@@ -1451,6 +1451,10 @@ domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+dropzone@^4.3.0:
+  version "4.3.0"
+  resolved "http://registry.npm.taobao.org/dropzone/download/dropzone-4.3.0.tgz#48b0b8f2ad092872e4b535b672a7c3f1a1d67c91"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.npm.taobao.org/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"

@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "axios": "^0.15.3",
+        "dropzone": "^4.3.0",
         "highlight.js": "^9.9.0",
         "marked": "^0.3.6",
         "nprogress": "^0.2.0",
