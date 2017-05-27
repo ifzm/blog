@@ -62,8 +62,9 @@
                     e.preventDefault()
 
                     e.target.focus()
-                    Utils.insertAtCursor.call(e.target, '\naaa')
+                    Utils.insertAtCursor.call(e.target, `\n![uploading...](${e.dataTransfer.files[0].name})\n`)
                     this.content = e.target.value
+                    this.$emit('input', this.content, e)
                     e.target.focus()
                 }
             }, false)
