@@ -173,7 +173,7 @@
     
     .form input,
     .form textarea {
-        border: 2px solid white;
+        border: 2px solid #ccc;
         padding: 7px;
         border-radius: 2px;
         transition: all .5s;

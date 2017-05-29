@@ -132,7 +132,7 @@
     .checkbox-text {
         display: inline-block;
         height: 16px;
-        line-height: 16px;
+        line-height: 18px;
         font-size: .9em;
         padding-left: 8px;
     }

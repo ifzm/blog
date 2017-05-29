@@ -76,7 +76,8 @@
         position: relative;
         display: inline-block;
         margin: 8px 8px 8px 0;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
+        border: 2px solid #ccc;
+        /*box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);*/
     }
     
     .select .select-container {
@@ -88,7 +89,6 @@
         height: 30px;
         padding: 0 10px;
         border: 0;
-        border-radius: 2px;
         background: white;
         transition: all .4s cubic-bezier(.25, .8, .25, 1);
     }

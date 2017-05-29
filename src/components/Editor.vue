@@ -1,11 +1,16 @@
 <template>
     <div class="editor" :class="classes">
         <div class="editor-toolbar">
-            <span>B</span><span>I</span>
+            <button 
+                class="fa" 
+                :class="toolbar.icon"
+                v-for="toolbar in toolbars" 
+                @click.stop="toolbar.handler">
+            </button>
         </div>
         <div class="editor-container">
             <textarea 
-                ref="textarea"
+                ref="editor"
                 :name="name" 
                 :placeholder="placeholder" 
                 v-model="content"
@@ -43,10 +48,33 @@
             },
         },
         data() {
+            let self = this
+
             return {
                 content: this.value,
                 focus: false,
-                menuStyle: ''
+                menuStyle: '',
+                toolbars: [{
+                    icon: 'fa-bold',
+                    handler(e) {
+                        self.insertString(self.$refs.editor, ' **粗体** ', 3, 2)
+                    }
+                }, {
+                    icon: 'fa-italic',
+                    handler(e) {
+                        self.insertString(self.$refs.editor, ' *斜体* ', 2, 2)
+                    }
+                }, {
+                    icon: 'fa-code',
+                    handler(e) {
+                        self.insertString(self.$refs.editor, ' `` ', 2)
+                    }
+                }, {
+                    icon: 'fa-photo',
+                    handler(e) {
+                        self.insertString(self.$refs.editor, ' `` ', 2)
+                    }
+                }]
             }
         },
         computed: {
@@ -60,12 +88,7 @@
             this.$el.addEventListener('drop', (e) => {
                 if (e.dataTransfer.files.length > 0) {
                     e.preventDefault()
-
-                    e.target.focus()
-                    Utils.insertAtCursor.call(e.target, `\n![uploading...](${e.dataTransfer.files[0].name})\n`)
-                    this.content = e.target.value
-                    this.$emit('input', this.content, e)
-                    e.target.focus()
+                    this.insertString(e.target, `\n![Uploading...](${e.dataTransfer.files[0].name})\n`)
                 }
             }, false)
         },
@@ -75,10 +98,18 @@
                 this.$refs.rightMenu.toggle(true)
             },
             onPressTab(e) {
-                Utils.insertAtCursor.call(e.currentTarget, '  ')
+                this.insertString(e.currentTarget, '  ')
             },
             onInput(e) {
                 this.$emit('input', this.content, e)
+            },
+            insertString(target, str, move = 0, selects = 0) {
+                Utils.insertAtCursor.call(target, str)
+                this.content = target.value
+                this.onInput()
+                target.focus()
+
+                target.setSelectionRange(target.selectionEnd - move - selects, target.selectionEnd - move)
             }
         }
     }
@@ -99,12 +130,25 @@
     
     .editor-toolbar {
         width: 100%;
-        height: 30px;
-        line-height: 26px;
+        line-height: 25px;
         padding: 2px 7px;
         border-bottom: 1px solid #eae9e9;
     }
-    
+
+    .editor-toolbar > button {
+        width: 19px;
+        height: 19px;
+        line-height: 19px;
+        text-align: center;
+        border: 0 none;
+        background-color: white;
+        transition: all .5s;
+    }
+
+    .editor-toolbar > button:hover {
+        background-color: #d6d3d3;
+    }
+
     .editor-container {
         display: flex;
         padding: 5px 0;
