@@ -52,12 +52,13 @@
             },
             mouseenter(e) {
                 if (this.$children.length > 0) {
-                    this.$set(this.item, 'open', true)
+                    // this.$set(this.item, 'open', true)
                 }
+                this.$emit('mouseenter', this.item)
             },
             mouseleave(e) {
                 if (this.$children.length > 0) {
-                    this.$set(this.item, 'open', false)
+                    // this.$set(this.item, 'open', false)
                 }
             }
         }

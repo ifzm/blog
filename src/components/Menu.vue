@@ -5,7 +5,8 @@
             @select="select"
             :item="item"
             :selected="checkValues.indexOf(item.value) !== -1"
-            :showCheckIcon="showCheckIcon">
+            :showCheckIcon="showCheckIcon"
+            @mouseenter="mouseenter">
             <m-menu
                 :items="item.children"
                 :values="checkValues"
@@ -54,6 +55,7 @@
                 Utils.clickoutside.call(this, this.active, e => {
                     this.clickoutside && this.clickoutside()
                     this.active = false
+                    this.recursiveHideItem()
                 })
             },
             select(value) {
@@ -67,6 +69,20 @@
                 }
 
                 this.$emit('select', this.checkValues, this.params)
+            },
+            recursiveHideItem(items = this.items) {
+                items.forEach(item => {
+                    this.$set(item, 'open', false)
+                    if (item.children && item.children.length > 0) {
+                        this.recursiveHideItem(item.children, false)
+                    }
+                })
+            },
+            mouseenter(current) {
+                if (!current.open) {
+                    this.recursiveHideItem()
+                    this.$set(current, 'open', true)
+                }
             }
         }
     }
@@ -79,7 +95,7 @@
         background-color: white;
         /*border: 1px solid #ececec;*/
         /*box-shadow: 0 0 0 rgba(0, 0, 0, .2), 0 0 0 rgba(0, 0, 0, .14), 3px 3px 10px -2px rgba(0, 0, 0, .12);*/
-        box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, .2), 0 0px 5px rgba(0, 0, 0, .14), 0 3px 10px -2px rgba(0, 0, 0, .12);
     }
     
     .menu .menu {
