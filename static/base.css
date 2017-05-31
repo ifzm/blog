@@ -166,7 +166,8 @@ a:hover {
     content: 'MD';
 }
 
-@media screen and (min-width: 1281px) {
+
+/*@media screen and (min-width: 1281px) {
     #app {
         padding-left: 300px;
     }
@@ -180,4 +181,4 @@ a:hover {
         opacity: 0;
         pointer-events: none;
     }
-}
+}*/

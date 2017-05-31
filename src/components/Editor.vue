@@ -14,7 +14,7 @@
                 :name="name" 
                 :placeholder="placeholder" 
                 v-model="content"
-                @input="onInput"
+                @input="response"
                 @contextmenu="contextmenu" 
                 @keydown.prevent.tab="onPressTab"
                 @focus="focus = true"
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-    import Dropzone from 'dropzone'
     import Utils from '../utils'
     import Menu from '../components/Menu'
 
@@ -38,6 +37,7 @@
         props: {
             name: String,
             value: String,
+            action: String,
             placeholder: {
                 type: String,
                 default: '请输入...'
@@ -88,7 +88,12 @@
             this.$el.addEventListener('drop', (e) => {
                 if (e.dataTransfer.files.length > 0) {
                     e.preventDefault()
-                    this.insertString(e.target, `\n![Uploading...](${e.dataTransfer.files[0].name})\n`)
+
+                    if (!!this.action) {
+                        this.upload(e)
+                    } else {
+                        throw new Error('Props `action` must be specified when using upload function.')
+                    }
                 }
             }, false)
         },
@@ -100,16 +105,41 @@
             onPressTab(e) {
                 this.insertString(e.currentTarget, '  ')
             },
-            onInput(e) {
-                this.$emit('input', this.content, e)
+            response(content) {
+                if (typeof content === 'string') {
+                    this.content = content
+                }
+                this.$emit('input', this.content)
             },
             insertString(target, str, move = 0, selects = 0) {
                 Utils.insertAtCursor.call(target, str)
-                this.content = target.value
-                this.onInput()
+                this.response(target.value)
                 target.focus()
 
                 target.setSelectionRange(target.selectionEnd - move - selects, target.selectionEnd - move)
+            },
+            upload(e) {
+                let self = this,
+                    xhr = new XMLHttpRequest(),
+                    formData = new FormData()
+
+                for (let file of e.dataTransfer.files) {
+                    formData.append('image', file)
+                    this.insertString(e.target, `\n![Uploading...](${file.name})\n`)
+                }
+
+                xhr.onload = function() {
+                    let files = JSON.parse(this.responseText),
+                        preview = self.content
+
+                    files.forEach(file => {
+                        preview = preview.replace(new RegExp(`\\!\\[Uploading...\\]\\(${file.originalname}\\)`, 'm'), `![image](${file.filename})`)
+                    })
+
+                    self.response(preview)
+                }
+                xhr.open('post', this.action)
+                xhr.send(formData)
             }
         }
     }
@@ -134,8 +164,8 @@
         padding: 2px 7px;
         border-bottom: 1px solid #eae9e9;
     }
-
-    .editor-toolbar > button {
+    
+    .editor-toolbar>button {
         width: 19px;
         height: 19px;
         line-height: 19px;
@@ -144,11 +174,11 @@
         background-color: white;
         transition: all .5s;
     }
-
-    .editor-toolbar > button:hover {
+    
+    .editor-toolbar>button:hover {
         background-color: #d6d3d3;
     }
-
+    
     .editor-container {
         display: flex;
         padding: 5px 0;

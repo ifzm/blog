@@ -6,7 +6,11 @@
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
                 <div class="control-group">
-                    <editor v-model="content" :rightMenus="menuItems"></editor>
+                    <editor 
+                        v-model="content" 
+                        action="http://localhost:4000/upload" 
+                        :rightMenus="menuItems">
+                    </editor>
                 </div>
                 <div class="control-group">
                     <m-select :items="selectItems" multiple></m-select>
