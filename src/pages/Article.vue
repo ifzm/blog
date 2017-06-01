@@ -139,14 +139,14 @@
                 // alert(type)
             },
             save() {
-                // this.$refs.dialog.open({
-                //     title: '🚀Post created!',
-                //     content: '&#x1F469;⚡️🚴Your post <strong>Material Design is awesome</strong> has been created.',
-                //     confirm: '确认',
-                //     cancel: '取消'
-                // })
+                this.$refs.dialog.open({
+                    title: '🚀Post created!',
+                    content: '&#x1F469;⚡️🚴Your post <strong>Material Design is awesome</strong> has been created.',
+                    confirm: '确认',
+                    cancel: '取消'
+                })
 
-                // return
+                return
 
                 axios.start()
                     .post('post', {

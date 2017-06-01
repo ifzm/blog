@@ -1,11 +1,8 @@
 <template>
     <div class="editor" :class="classes">
         <div class="editor-toolbar">
-            <button 
-                class="fa" 
-                :class="toolbar.icon"
-                v-for="toolbar in toolbars" 
-                @click.stop="toolbar.handler">
+            <button v-for="toolbar in toolbars" @click.stop="toolbar.handler">
+                <icon :href="toolbar.icon"></icon>
             </button>
         </div>
         <div class="editor-container">
@@ -29,9 +26,11 @@
 <script>
     import Utils from '../utils'
     import Menu from '../components/Menu'
+    import Icon from '../components/Icon'
 
     export default {
         components: {
+            Icon,
             MMenu: Menu
         },
         props: {
@@ -55,24 +54,24 @@
                 focus: false,
                 menuStyle: '',
                 toolbars: [{
-                    icon: 'fa-bold',
+                    icon: 'icon-bold',
                     handler(e) {
-                        self.insertString(self.$refs.editor, ' **粗体** ', 3, 2)
+                        self.insertString(self.$refs.editor, '**粗体**', 2, 2)
                     }
                 }, {
-                    icon: 'fa-italic',
+                    icon: 'icon-italic',
                     handler(e) {
-                        self.insertString(self.$refs.editor, ' *斜体* ', 2, 2)
+                        self.insertString(self.$refs.editor, '_斜体_', 1, 2)
                     }
                 }, {
-                    icon: 'fa-code',
+                    icon: 'icon-code',
                     handler(e) {
-                        self.insertString(self.$refs.editor, ' `` ', 2)
+                        self.insertString(self.$refs.editor, '``', 1)
                     }
                 }, {
-                    icon: 'fa-photo',
+                    icon: 'icon-img',
                     handler(e) {
-                        self.insertString(self.$refs.editor, ' `` ', 2)
+                        self.insertString(self.$refs.editor, '`` ', 1)
                     }
                 }]
             }
@@ -110,11 +109,11 @@
                     this.content = content
                 }
                 this.$emit('input', this.content)
+                this.$refs.editor.focus()
             },
             insertString(target, str, move = 0, selects = 0) {
                 Utils.insertAtCursor.call(target, str)
                 this.response(target.value)
-                target.focus()
 
                 target.setSelectionRange(target.selectionEnd - move - selects, target.selectionEnd - move)
             },
@@ -166,9 +165,9 @@
     }
     
     .editor-toolbar>button {
-        width: 19px;
-        height: 19px;
-        line-height: 19px;
+        width: 31px;
+        height: 23px;
+        line-height: 23px;
         text-align: center;
         border: 0 none;
         background-color: white;
@@ -177,6 +176,11 @@
     
     .editor-toolbar>button:hover {
         background-color: #d6d3d3;
+    }
+    
+    .editor-toolbar .icon {
+        width: 20px;
+        height: 19px;
     }
     
     .editor-container {
