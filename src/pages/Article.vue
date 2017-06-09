@@ -61,7 +61,6 @@
     import hljs from 'highlight.js'
     import Utils from '../utils'
 
-
     marked.setOptions({
         breaks: true,
         highlight(code) {
