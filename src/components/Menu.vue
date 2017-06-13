@@ -97,12 +97,12 @@
         /*box-shadow: 0 0 0 rgba(0, 0, 0, .2), 0 0 0 rgba(0, 0, 0, .14), 3px 3px 10px -2px rgba(0, 0, 0, .12);*/
         box-shadow: 0px 1px 15px rgba(0, 0, 0, .2), 0 0px 5px rgba(0, 0, 0, .14), 0 3px 10px -2px rgba(0, 0, 0, .12);
     }
-    
+
     .menu .menu {
         top: 0;
         left: 100%;
     }
-    
+
     .menu.is-icon>.item>.item-icon {
         flex-basis: 16px;
     }
