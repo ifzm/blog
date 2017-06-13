@@ -80,18 +80,18 @@
         background-color: white;
         transition: all .5s;
     }
-    
+
     .item:hover {
         background-color: #ececec;
     }
-    
+
     .item .item-text {
         overflow: hidden;
         margin: 0 8px;
         line-height: 26px;
         flex-grow: 1;
     }
-    
+
     .item .icon {
         flex-basis: 16px;
     }
