@@ -18,10 +18,6 @@ Promise.prototype.done = () => {
 
 import '../static/base.css'
 
-document.oncontextmenu = function(e) {
-    e.preventDefault()
-}
-
 new Vue({
     router,
     render: h => h(App)

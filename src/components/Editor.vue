@@ -16,6 +16,7 @@
                 @keydown.prevent.tab="onPressTab"
                 @focus="focus = true"
                 @blur="focus = false"
+                @paste="paste"
                 spellcheck="false">
             </textarea>
             <m-menu ref="rightMenu" :items="rightMenus" :style="menuStyle"></m-menu>
@@ -95,8 +96,18 @@
                     }
                 }
             }, false)
+
+            // 右键菜单
+            if (this.rightMenus.length > 0) {
+                this.$refs.editor.oncontextmenu = function(e) {
+                    e.preventDefault()
+                }
+            }
         },
         methods: {
+            paste(e) {
+                console.log(e)
+            },
             contextmenu(e) {
                 this.menuStyle = `left: ${e.clientX}px; top: ${e.clientY}px;`
                 this.$refs.rightMenu.toggle(true)
