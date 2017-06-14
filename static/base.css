@@ -30,7 +30,7 @@
     list-style: none;
     box-sizing: inherit;
     line-height: 1.45;
-    font-family: "Monaco", "Roboto", Helvetica, "Noto Sans", "Noto", monospace, sans-serif;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
 body,
@@ -41,7 +41,7 @@ html,
 }
 
 body {
-    font-size: 14px;
+    font-size: 1em;
     color: #333;
     letter-spacing: 0;
     box-sizing: border-box;
