@@ -10,7 +10,7 @@ export default {
     clickoutside(flag, callback) {
         if (!flag && !callback) {
             let event = document.createEvent('MouseEvents')
-            event.initMouseEvent('click')
+            event.initMouseEvent('click', false, true, document.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
             document.dispatchEvent(event)
         } else {
             setTimeout(() => {
@@ -28,7 +28,7 @@ export default {
     },
     /**
      * 在光标处插入字符串
-     * 
+     *
      * document.addEventListener('keydown', e => {
      *     let key = e.keyCode
      *     if (key === 9 && window.getSelection) {
@@ -36,7 +36,7 @@ export default {
      *         insertAtCursor.call(this, '  ')
      *     }
      * }, false)
-     * 
+     *
      * @param {string} str 需要插入的字符串
      */
     insertAtCursor(str) {
