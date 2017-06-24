@@ -4,7 +4,7 @@
             <slot></slot>
         </div>
 
-        <layer class="sidenav-layer" @close="close" />
+        <layer class="sidenav-layer" @close="close"></layer>
   </div>
 </template>
 
@@ -48,12 +48,12 @@
         left: 0;
         transform: translate3D(-100%, 0, 0);
     }
-    
+
     .sidenav.fixed .sidenav-content,
     .sidenav.fixed .sidenav-layer {
         position: fixed;
     }
-    
+
     .sidenav .sidenav-content {
         width: 304px;
         position: absolute;
@@ -69,13 +69,13 @@
         transition-property: transform;
         will-change: transform;
     }
-    
+
     .sidenav.active .sidenav-content {
         box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
         pointer-events: auto;
         transform: translate3D(0, 0, 0);
     }
-    
+
     .sidenav .sidenav-layer {
         position: absolute;
         top: 0;
@@ -90,7 +90,7 @@
         transition-property: opacity;
         will-change: opacity;
     }
-    
+
     .sidenav.active .sidenav-layer {
         opacity: 1;
         pointer-events: auto;

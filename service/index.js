@@ -11,26 +11,26 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('uploads'))
 
 app.all('*', (req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    next()
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
 })
 
-app.post('/upload', utils.upload.array('image'), (req, res, next) => {
-    let files = []
+app.post('/upload', utils.upload.array('file'), (req, res, next) => {
+  let files = []
 
-    if (req.files) {
-        files = [].concat(req.files).map(file => ({
-            originalname: file.originalname,
-            filename: 'http://localhost:4000/' + file.filename
-        }))
-    }
+  if (req.files) {
+    files = [].concat(req.files).map(file => ({
+      originalname: file.originalname,
+      filename: 'http://localhost:4000/' + file.filename
+    }))
+  }
 
-    res.json(files)
+  res.json(files)
 })
 
 routes(app)
 
 app.listen(4000, () => {
-    console.log('service listen 4000...')
+  console.log('service listen 4000...')
 })

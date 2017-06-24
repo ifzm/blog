@@ -1,18 +1,19 @@
 <template>
     <div class="editor" :class="classes">
         <div class="editor-toolbar">
-            <button v-for="toolbar in toolbars" @click.stop="toolbar.handler">
-                <icon :href="toolbar.icon"></icon>
+            <button v-for="(toolbar, index) in toolbars" :key="index" @click.stop="toolbar.handler">
+                <!--<icon :href="toolbar.icon"></icon>-->
+                <i class="icon" :class="toolbar.icon"></i>
             </button>
         </div>
         <div class="editor-container">
-            <textarea 
+            <textarea
                 ref="editor"
-                :name="name" 
-                :placeholder="placeholder" 
+                :name="name"
+                :placeholder="placeholder"
                 v-model="content"
                 @input="response"
-                @contextmenu="contextmenu" 
+                @contextmenu="contextmenu"
                 @keydown.prevent.tab="onPressTab"
                 @focus="focus = true"
                 @blur="focus = false"
@@ -134,7 +135,7 @@
                     formData = new FormData()
 
                 for (let file of e.dataTransfer.files) {
-                    formData.append('image', file)
+                    formData.append('file', file)
                     this.insertString(e.target, `\n![Uploading...](${file.name})\n`)
                 }
 
@@ -163,47 +164,46 @@
         transition: all .5s;
         background-color: white;
     }
-    
+
     .editor.editor-focus {
         border-color: #51a351;
     }
-    
+
     .editor-toolbar {
         width: 100%;
         line-height: 25px;
         padding: 2px 7px;
         border-bottom: 1px solid #eae9e9;
     }
-    
+
     .editor-toolbar>button {
-        width: 31px;
-        height: 23px;
-        line-height: 23px;
+        width: 27px;
+        height: 25px;
+        line-height: 25px;
         text-align: center;
         border: 0 none;
         background-color: white;
         transition: all .5s;
     }
-    
+
     .editor-toolbar>button:hover {
         background-color: #d6d3d3;
     }
-    
+
     .editor-toolbar .icon {
-        width: 20px;
-        height: 19px;
+        font-size: 17px !important;
     }
-    
+
     .editor-container {
         display: flex;
         padding: 5px 0;
     }
-    
+
     .editor textarea {
         border: 0 none !important;
         border-radius: 0 !important;
     }
-    
+
     .editor textarea:focus,
     .editor textarea:active {
         border-color: none !important;

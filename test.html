@@ -5,83 +5,100 @@
     <meta charset="UTF-8">
     <title>TEST</title>
     <link rel="stylesheet" href="./static/base.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_v5pdsd5z60wzh0k9.css">
     <style lang="css">
         #app {
-            flex: 1;
-            display: flex;
             width: 100%;
             height: 100%;
         }
-        
+
+        header {
+            display: flex;
+            flex-flow: row;
+            width: 100%;
+            height: 62px;
+            background-color: #324057;
+            color: white;
+        }
+
+        header>div {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo {
+            flex: 0 0 150px;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        header .tools {
+            flex: 0 0 120px;
+        }
+
+        header .nav ul {
+            height: 100%;
+            color: #ccc;
+        }
+
+        header .nav .nav-item {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 1.5rem;
+            cursor: pointer;
+        }
+
+        header .nav .nav-item.active {
+            color: white;
+        }
+
+        header .nav .nav-item.active:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #ccc;
+        }
+
         main {
             flex: 1;
             display: flex;
             flex-flow: column;
         }
-        
-        header {
-            height: 50px;
-            border: 1px solid #ccc;
-        }
-        
+
         .content {
             border: 1px solid #ccc;
             height: 100%;
             overflow: auto;
-            padding: 20px;
-        }
-        
-        .item {
-            display: flex;
-            flex: 1;
-            flex-flow: row;
-            border: 2px dashed #ccc;
-            margin-bottom: 10px;
-        }
-        
-        .item span {
-            height: 50px;
-            line-height: 50px;
-            margin: 10px;
-            background-color: #ccc;
-        }
-        
-        .item .sub.icon {
-            flex-basis: 50px;
-        }
-        
-        .item .sub-text {
-            flex-grow: 1;
-        }
-        
-        .item+.item>.icon {
-            flex-basis: 50px;
-            margin: 10px;
+            padding: 2em;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <main>
-            <header></header>
-            <div class="content">
-                <div class="item">
-                    <span class="sub"></span>
-                    <span class="sub-text"></span>
-                    <span class="icon sub"></span>
-                </div>
-                <div class="item">
-                    <i class="icon"></i>
-                    <span class="sub-text"></span>
-                    <span class="icon sub"></span>
-                </div>
-                <div class="item">
-                    <span class="icon sub"></span>
-                    <span class="sub-text"></span>
-                    <span class="icon sub"></span>
-                </div>
+        <header>
+            <div class="logo">
+                LOGO
             </div>
+            <div class="nav">
+                <ul>
+                    <li class="nav-item active">文章</li>
+                    <li class="nav-item">组件示例</li>
+                    <li class="nav-item">TODO</li>
+                </ul>
+            </div>
+            <div class="tools">
+            </div>
+        </header>
+        <main>
+
         </main>
     </div>
 </body>

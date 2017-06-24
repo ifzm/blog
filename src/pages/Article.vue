@@ -6,9 +6,9 @@
                     <input type="text" placeholder="标题" v-model="title">
                 </div>
                 <div class="control-group">
-                    <editor 
-                        v-model="content" 
-                        action="http://localhost:4000/upload" 
+                    <editor
+                        v-model="content"
+                        action="http://localhost:4000/upload"
                         :rightMenus="menuItems">
                     </editor>
                 </div>
@@ -169,11 +169,11 @@
         padding: 20px;
         background: #eaeaea;
     }
-    
+
     .form .control-group {
         margin-bottom: 15px;
     }
-    
+
     .form input,
     .form textarea {
         border: 2px solid #ccc;
@@ -183,19 +183,19 @@
         resize: none;
         width: 100%;
     }
-    
+
     .form textarea {
         min-height: 220px;
         overflow-x: hidden;
     }
-    
+
     input:focus,
     input:active,
     textarea:focus,
     textarea:active {
         border-color: rgba(0, 0, 0, 0.26);
     }
-    
+
     .form.success input:focus,
     .form.success input:active,
     .form.success textarea:focus,
@@ -206,7 +206,7 @@
     textarea.success:active {
         border-color: #51a351;
     }
-    
+
     .form.primary input:focus,
     .form.primary input:active,
     .form.primary textarea:focus,
@@ -217,7 +217,7 @@
     textarea.primary:active {
         border-color: #2196f3;
     }
-    
+
     .button {
         min-width: 80px;
         min-height: 32px;
@@ -229,49 +229,49 @@
         background: none;
         border: 0;
         border-radius: 2px;
-        transition: all .4s cubic-bezier(.25, .8, .25, 1);
         text-align: center;
         font-weight: 500;
+        transition: all 1s cubic-bezier(.25, .8, .25, 1);
     }
-    
+
     .button:hover,
     .button:active,
     .button:focus {
         background-color: hsla(0, 0%, 60%, .2);
         text-decoration: none;
     }
-    
+
     .button.shadow {
         box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
     }
-    
+
     .button.default {
         color: black;
         background-color: #ffffff;
     }
-    
+
     .button.success {
         color: white;
         background-color: #5bb75b;
     }
-    
+
     .button.success:hover,
     .button.success:active,
     .button.success:focus {
         background-color: #51a351;
     }
-    
+
     .button.primary {
         color: white;
         background-color: #2196f3;
     }
-    
+
     .button.primary:hover,
     .button.primary:active,
     .button.primary:focus {
         background-color: #1e88e5;
     }
-    
+
     .button.icon-button {
         width: 40px;
         min-width: 40px;
@@ -280,23 +280,23 @@
         padding: 0 8px;
         color: white;
     }
-    
+
     .button.icon-button>i.icon {
         font-size: 1.7em;
     }
-    
+
     .post-create {
         display: flex;
         flex-flow: row wrap;
         padding-left: 10px;
     }
-    
+
     .create-left,
     .create-right {
         flex-basis: calc(50% - 10px);
         margin-right: 10px;
     }
-    
+
     .create-right {
         border: 2px dashed #ccc;
         padding: 10px;
