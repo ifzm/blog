@@ -166,6 +166,22 @@ a:hover {
     content: 'MD';
 }
 
+.view {
+    transition: all .5s cubic-bezier(.55, 0, .1, 1);
+}
+
+.slide-bottom-enter {
+    opacity: 0;
+    -webkit-transform: translate(0, 30px);
+    transform: translate(0, 30px);
+}
+
+.slide-bottom-leave-active {
+    opacity: 0;
+    -webkit-transform: translate(0, 30px);
+    transform: translate(0, 30px);
+}
+
 svg.icon {
     width: 1em;
     height: 1em;

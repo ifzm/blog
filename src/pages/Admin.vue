@@ -8,6 +8,7 @@
                 <ul>
                     <li class="nav-item" :key="index" v-for="(nav, index) in navs" :class="{'active': nav.active}" @click="active(index)">
                         {{ nav.text }}
+                        <span v-if="nav.tip" class="nav-item-tip">{{ nav.tip }}</span>
                     </li>
                 </ul>
             </div>
@@ -31,10 +32,11 @@ export default {
                 router: '/admin/article'
             }, {
                 text: '组件示例',
-                router: '/admin/article'
+                router: '/admin/compents'
             }, {
                 text: 'TODO',
-                router: '/admin'
+                router: '/admin',
+                tip: '6'
             }]
         }
     },
@@ -76,6 +78,8 @@ header {
     height: 62px;
     background-color: #324057;
     color: white;
+    z-index: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 }
 
 header>div {
@@ -98,7 +102,7 @@ header .nav ul {
     height: 100%;
 }
 
-header .nav-item {
+.nav .nav-item {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -106,14 +110,15 @@ header .nav-item {
     padding: 0 1.5rem;
     cursor: pointer;
     color: #ccc;
+    transition: all .5s cubic-bezier(.55, 0, .1, 1);
 }
 
-header .nav-item.active,
-header .nav-item:hover {
+.nav .nav-item.active,
+.nav .nav-item:hover {
     color: white;
 }
 
-header .nav-item.active:after {
+.nav .nav-item.active:after {
     content: "";
     display: block;
     position: absolute;
@@ -124,8 +129,24 @@ header .nav-item.active:after {
     background-color: #ccc;
 }
 
+.nav .nav-item-tip {
+    position: absolute;
+    top: 10px;
+    right: 4px;
+    background-color: #ca4236;
+    font-size: 0.8em;
+    color: #e8e5e5;
+    border-radius: 4px;
+    padding: 0 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
 main {
-    padding: 20px 10px;
+    flex: 1;
+    padding: 10px;
     overflow: auto;
 }
 </style>
