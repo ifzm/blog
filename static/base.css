@@ -177,6 +177,8 @@ a:hover {
 }
 
 .slide-bottom-leave-active {
+    position: absolute;
+    width: calc(100% - 20px);
     opacity: 0;
     -webkit-transform: translate(0, 30px);
     transform: translate(0, 30px);
