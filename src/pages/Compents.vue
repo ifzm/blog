@@ -287,19 +287,16 @@
 
     .post-create {
         display: flex;
-        flex-flow: row wrap;
-        padding: 10px 0;
-        padding-left: 10px;
     }
 
     .create-left,
     .create-right {
-        flex-basis: calc(50% - 10px);
-        margin-right: 10px;
+        flex-basis: 50%;
     }
 
     .create-right {
         border: 2px dashed #ccc;
+        margin-left: 10px;
         padding: 10px;
         word-wrap: break-word;
         word-break: break-all;
