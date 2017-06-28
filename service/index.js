@@ -9,9 +9,14 @@ require('moment').locale('zh-cn')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('uploads'))
+app.use((err, req, res, next) => {
+  res.status(500)
+  res.render('error', { error: err })
+})
 
 app.all('*', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH')
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
@@ -30,6 +35,11 @@ app.post('/upload', utils.upload.array('file'), (req, res, next) => {
 })
 
 routes(app)
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise ', p)
+  console.log('reason: ', reason)
+})
 
 app.listen(4000, () => {
   console.log('service listen 4000...')

@@ -71,6 +71,29 @@ a:hover {
     color: #333;
 }
 
+code {
+    padding: .2em .5em;
+    margin: 0 .25em;
+    font-size: 12px;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 4px;
+}
+
+code.success {
+    color: white;
+    background-color: #51a351;
+}
+
+code.danger {
+    color: white;
+    background-color: #f44336;
+}
+
+code.primary {
+    color: white;
+    background-color: #2196f3;
+}
+
 .markdown {
     word-wrap: break-word;
 }
@@ -117,6 +140,14 @@ a:hover {
     margin-bottom: 16px;
     padding-bottom: 0.3em;
     border-bottom: 1px solid #eee;
+}
+
+.markdown pre code {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    background-color: inherit;
+    font-size: inherit;
 }
 
 .markdown code[class^="lang-"]:after {
@@ -192,6 +223,141 @@ svg.icon {
     overflow: hidden;
 }
 
+.form {
+    padding: 20px;
+    background: #eaeaea;
+}
+
+.form .control-group {
+    margin-bottom: 15px;
+}
+
+.form input,
+.form textarea {
+    border: 2px solid #ccc;
+    padding: 7px;
+    border-radius: 2px;
+    transition: all .5s;
+    resize: none;
+    width: 100%;
+}
+
+.form textarea {
+    min-height: 220px;
+    overflow-x: hidden;
+}
+
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+    border-color: rgba(0, 0, 0, 0.26);
+}
+
+.form.success input:focus,
+.form.success input:active,
+.form.success textarea:focus,
+.form.success textarea:active,
+input.success:focus,
+input.success:active,
+textarea.success:focus,
+textarea.success:active {
+    border-color: #51a351;
+}
+
+.form.primary input:focus,
+.form.primary input:active,
+.form.primary textarea:focus,
+.form.primary textarea:active,
+input.primary:focus,
+input.primary:active,
+textarea.primary:focus,
+textarea.primary:active {
+    border-color: #2196f3;
+}
+
+.button {
+    min-width: 80px;
+    min-height: 32px;
+    line-height: 32px;
+    padding: 0 15px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 1s cubic-bezier(.25, .8, .25, 1);
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+    background-color: hsla(0, 0%, 60%, .2);
+    text-decoration: none;
+}
+
+.button.shadow {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
+}
+
+.button.white {
+    color: black;
+    background-color: #ffffff;
+}
+
+.button.success {
+    color: white;
+    background-color: #5bb75b;
+}
+
+.button.success:hover,
+.button.success:active,
+.button.success:focus {
+    background-color: #51a351;
+}
+
+.button.primary {
+    color: white;
+    background-color: #2196f3;
+}
+
+.button.primary:hover,
+.button.primary:active,
+.button.primary:focus {
+    background-color: #1e88e5;
+}
+
+.button.default {
+    color: #777;
+    background-color: hsla(0, 0%, 60%, .2);
+}
+
+.button.default:hover,
+.button.default:active,
+.button.default:focus {
+    color: black;
+    background-color: hsla(0, 0%, 60%, .5);
+}
+
+.button.icon-button {
+    width: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    padding: 0 8px;
+    color: white;
+}
+
+.button.icon-button>i.icon {
+    font-size: 1.7em;
+}
+
+.bold {
+    font-weight: 600;
+}
 
 /*@media screen and (min-width: 1281px) {
     #app {

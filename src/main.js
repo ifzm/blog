@@ -17,6 +17,8 @@ Promise.prototype.done = () => {
   NProgress.done()
 }
 
+Vue.prototype.axios = axios
+
 new Vue({
   router,
   render: h => h(App)

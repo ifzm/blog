@@ -3,7 +3,7 @@ const utils = require('../utils')
 const Post = require('../models/post')
 
 module.exports = app => {
-  app.post('/post', (req, res) => {
+  app.post('/post', async (req, res) => {
     let post = new Post(Object.assign(req.body, {
       meta: {
         time: new Date(),
@@ -13,55 +13,36 @@ module.exports = app => {
       }
     }))
 
-    post.save()
-      .then(row => {
-        if (row) {
-          res.json({
-            'message': '添加成功！',
-            'status': '200'
-          })
-        } else {
-          res.json({
-            'message': '添加失败！',
-            'status': '500'
-          })
-        }
-      })
-      .catch(err => {
-        console.error(err)
-        res.json({
-          'message': err,
-          'status': '500'
-        })
-      })
+    const row = await post.save()
+    const message = row ? '添加成功！' : '添加失败！'
+    const status = row ? 200 : 500
+    res.json({ message, status })
   })
 
-  app.get('/post', (req, res) => {
-    Post.find()
-      .sort({
+  app.get('/post', async (req, res) => {
+    // throw new Error('aaaaa')
+    const options = {
+      skip: 0,
+      limit: 10,
+      sort: {
         'meta.time': -1
-      })
-      .limit(10)
-      .then(rows => {
-        rows.filter(post => {
-          post.meta.time = moment(post.meta.time).fromNow()
-        })
-        res.json(rows)
-      })
-      .catch(err => {
-        console.error(err)
-      })
+      }
+    }
+    const count = await Post.find().count()
+    let rows = await Post.find().setOptions(options)
+    rows.forEach(post => { post.meta.time = moment(post.meta.time).fromNow() })
+    res.json({ count, rows })
   })
 
-  app.get('/post/:id', (req, res) => {
-    Post.findOne({ _id: req.params.id })
-      .then(row => {
-        row.meta.time = moment(row.meta.time).fromNow()
-        row.content = utils.marked(row.content)
-        res.json(row)
-      })
-      .catch(err => {
-        console.error(err)
-      })
+  app.get('/post/:id', async (req, res) => {
+    let row = await Post.findOne({ _id: req.params.id })
+    row.meta.time = moment(row.meta.time).fromNow()
+    row.content = utils.marked(row.content)
+    res.json(row)
+  })
+
+  app.delete('/post/:id', async (req, res, next) => {
+    await Post.remove({ _id: req.params.id })
+    res.status(200).json({ message: '删除成功！' })
   })
 }
