@@ -58,7 +58,7 @@
                 axios.start()
                     .get('post')
                     .then(res => {
-                        this.posts = res.data
+                        this.posts = res.data.rows
                     })
                     .catch(err => {
                         this.err = err

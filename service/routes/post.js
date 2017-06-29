@@ -1,5 +1,5 @@
 const moment = require('moment')
-const utils = require('../utils')
+const { marked, wrap } = require('../utils')
 const Post = require('../models/post')
 
 module.exports = app => {
@@ -19,30 +19,22 @@ module.exports = app => {
     res.json({ message, status })
   })
 
-  app.get('/post', async (req, res) => {
-    // throw new Error('aaaaa')
-    const options = {
-      skip: 0,
-      limit: 10,
-      sort: {
-        'meta.time': -1
-      }
-    }
+  app.get('/post', wrap(async (req, res) => {
     const count = await Post.find().count()
-    let rows = await Post.find().setOptions(options)
+    let rows = await Post.find().skip(0).limit(10).sort({ 'meta.time': -1 })
     rows.forEach(post => { post.meta.time = moment(post.meta.time).fromNow() })
     res.json({ count, rows })
-  })
+  }))
 
-  app.get('/post/:id', async (req, res) => {
+  app.get('/post/:id', wrap(async (req, res) => {
     let row = await Post.findOne({ _id: req.params.id })
     row.meta.time = moment(row.meta.time).fromNow()
-    row.content = utils.marked(row.content)
+    row.content = marked(row.content)
     res.json(row)
-  })
+  }))
 
-  app.delete('/post/:id', async (req, res, next) => {
+  app.delete('/post/:id', wrap(async (req, res, next) => {
     await Post.remove({ _id: req.params.id })
     res.status(200).json({ message: '删除成功！' })
-  })
+  }))
 }

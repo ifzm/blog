@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const utils = require('./utils')
+const methodOverride = require('method-override')
+const { upload } = require('./utils')
 const routes = require('./routes')
 
 const app = express()
@@ -8,11 +9,8 @@ const app = express()
 require('moment').locale('zh-cn')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride())
 app.use(express.static('uploads'))
-app.use((err, req, res, next) => {
-  res.status(500)
-  res.render('error', { error: err })
-})
 
 app.all('*', (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -21,7 +19,7 @@ app.all('*', (req, res, next) => {
   next()
 })
 
-app.post('/upload', utils.upload.array('file'), (req, res, next) => {
+app.post('/upload', upload.array('file'), (req, res, next) => {
   let files = []
 
   if (req.files) {
@@ -35,6 +33,10 @@ app.post('/upload', utils.upload.array('file'), (req, res, next) => {
 })
 
 routes(app)
+
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: err.message })
+})
 
 process.on('unhandledRejection', (reason, p) => {
   console.log('Unhandled Rejection at: Promise ', p)
