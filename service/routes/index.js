@@ -8,8 +8,8 @@ mongoose.Promise = Promise
 mongoose.connect(config.mongo.url)
 
 const db = mongoose.connection
-db.on('error', () => { console.error(`${config.mongo.url} connection error...`) })
-db.once('open', () => { console.log(`${config.mongo.url} connection error...`) })
+db.on('error', () => { console.error(`${config.mongo.url} open faild...`) })
+db.once('open', () => { console.log(`${config.mongo.url} open success...`) })
 
 module.exports = app => {
   glob(__dirname, '[^index]\\.js')

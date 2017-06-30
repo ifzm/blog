@@ -3,7 +3,7 @@
         <section class="articles">
             <div class="toolbar">
                 <span class="toolbar-message">
-                    目前共计<code>{{ total }}</code>篇博文，继续努力 (๑•̀ㅂ•́)و✧
+                    目前共计<code>{{ total }}</code>篇博文，继续努力 (•̀ᴗ•́)و
                 </span>
                 <span class="toolbar-search" v-show="false">
                     <input type="text" placeholder="关键词...">
@@ -56,7 +56,7 @@ export default {
             .get('post')
             .then(res => {
                 if (res.data.count === 0) {
-                    this.message = '空空如也，还不快去写 (๑￫ܫ￩)'
+                    this.message = '空空如也，还不快去写。 ∑(っ °Д °;)っ'
                 } else {
                     this.articles = res.data.rows
                     this.total = res.data.count
