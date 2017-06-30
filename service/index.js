@@ -1,3 +1,5 @@
+global.Promise = require('bluebird')
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -33,10 +35,6 @@ app.post('/upload', upload.array('file'), (req, res, next) => {
 })
 
 routes(app)
-
-app.use((err, req, res, next) => {
-  res.status(500).json({ error: err.message })
-})
 
 process.on('unhandledRejection', (reason, p) => {
   console.log('Unhandled Rejection at: Promise ', p)

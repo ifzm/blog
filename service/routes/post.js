@@ -20,6 +20,7 @@ module.exports = app => {
   })
 
   app.get('/post', wrap(async (req, res) => {
+    // await Promise.reject(new Error('aa'))
     const count = await Post.find().count()
     let rows = await Post.find().skip(0).limit(10).sort({ 'meta.time': -1 })
     rows.forEach(post => { post.meta.time = moment(post.meta.time).fromNow() })

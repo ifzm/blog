@@ -1,6 +1,5 @@
 const path = require('path')
 const mongoose = require('mongoose')
-const Promise = require('bluebird')
 const config = require('../config')
 const { glob } = require('../utils')
 
@@ -11,8 +10,11 @@ const db = mongoose.connection
 db.on('error', () => { console.error(`${config.mongo.url} open faild...`) })
 db.once('open', () => { console.log(`${config.mongo.url} open success...`) })
 
-module.exports = app => {
-  glob(__dirname, '[^index]\\.js')
-    .then(files => files.forEach(file => require(path.resolve(__dirname, file))(app)))
-    .catch(console.error)
+module.exports = async app => {
+  const files = await glob(__dirname, '[^index]\\.js')
+  files.forEach(file => require(path.resolve(__dirname, file))(app))
+
+  app.use((err, req, res, next) => {
+    res.status(500).json({ error: err.message })
+  })
 }
