@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const moment = require('moment')
 const { marked, wrap, validate } = require('../utils')
-const Post = require('../models/post')
+const Post = require('../models').Post
 
 module.exports = app => {
   const schema = {

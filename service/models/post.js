@@ -3,14 +3,29 @@ const Schema = mongoose.Schema
 
 const postSchema = new Schema({
   title: String,
-  author: String,
-  date: Date,
   body: String,
   description: String,
-  hidden: Boolean,
+  author: {
+    type: String,
+    default: 'ifzm'
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  hidden: {
+    type: Boolean,
+    default: false
+  },
   meta: {
-    likes: Number,
-    views: Number,
+    likes: {
+      type: Number,
+      default: 0
+    },
+    views: {
+      type: Number,
+      default: 0
+    },
     tags: {
       type: [String],
       index: true
@@ -18,7 +33,10 @@ const postSchema = new Schema({
   },
   comments: [{
     body: String,
-    date: Date
+    date: {
+      type: Date,
+      default: Date.now
+    }
   }]
 })
 
