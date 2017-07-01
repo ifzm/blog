@@ -1,15 +1,27 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  meta: Object,
+const postSchema = new Schema({
+  title: String,
+  author: String,
+  date: Date,
+  body: String,
   description: String,
-  content: String
+  hidden: Boolean,
+  meta: {
+    likes: Number,
+    views: Number,
+    tags: {
+      type: [String],
+      index: true
+    }
+  },
+  comments: [{
+    body: String,
+    date: Date
+  }]
 })
 
-const post = mongoose.model('post', postSchema)
+const Post = mongoose.model('Post', postSchema)
 
-module.exports = post
+module.exports = Post
