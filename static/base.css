@@ -1,5 +1,5 @@
 ::-webkit-scrollbar-track-piece {
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 0;
 }
 
@@ -33,9 +33,9 @@
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-body,
 html,
-#app {
+body {
+    margin: 0;
     height: 100%;
     overflow: hidden;
 }
@@ -159,6 +159,10 @@ code.primary {
     line-height: 15px;
     text-align: right;
     padding: 16px 16px 0;
+}
+
+.markdown code.lang-basic:after {
+    content: 'BASIC';
 }
 
 .markdown code.lang-bash:after {

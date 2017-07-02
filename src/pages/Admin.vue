@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
 #app {
     display: flex;
     flex-flow: column;

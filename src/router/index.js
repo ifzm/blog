@@ -8,10 +8,10 @@ let routes = [{
     component: resolve => require(['../pages/Index'], resolve),
     children: [{
         path: '/',
-        component: resolve => require(['../components/Posts'], resolve)
+        component: resolve => require(['../pages/Posts'], resolve)
     }, {
         path: '/post/:id',
-        component: resolve => require(['../components/Post'], resolve)
+        component: resolve => require(['../pages/Post'], resolve)
     }]
 }, {
     path: '/admin',
