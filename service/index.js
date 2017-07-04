@@ -4,10 +4,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const routes = require('./routes')
-
 const app = express()
 
-require('moment').locale('zh-cn')
 app.use(methodOverride())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
