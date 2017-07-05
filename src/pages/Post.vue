@@ -17,11 +17,11 @@
             </div>
             <div class="post-item-description">{{ post.description }}</div>
             <div class="post-item-body markdown" v-html="post.body"></div>
+            <div class="sponsor">
+                <div class>打赏支持</div>
+                <img src="../assets/pay.png" alt="赞助">
+            </div>
         </article>
-        <div class="sponsor">
-            <div class>打赏支持</div>
-            <img src="../assets/pay.png" alt="赞助">
-        </div>
     </section>
 </template>
 

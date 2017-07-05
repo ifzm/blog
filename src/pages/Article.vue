@@ -5,8 +5,9 @@
                 <span class="toolbar-message">
                     目前共计<code>{{ total }}</code>篇博文，继续努力 (•̀ᴗ•́)و
                 </span>
-                <span class="toolbar-search" v-show="false">
-                    <input type="text" placeholder="关键词...">
+                <span class="toolbar-tools">
+                    <input type="text" placeholder="关键词..." v-show="false">
+                    <button class="button default bold">添加</button>
                 </span>
             </div>
             <div class="items">
@@ -105,7 +106,7 @@ export default {
     justify-content: space-between;
 }
 
-.toolbar-search input {
+.toolbar-tools input {
     width: 140px;
     padding: 5px;
     border: 2px solid #ccc;
