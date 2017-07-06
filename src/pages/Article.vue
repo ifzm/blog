@@ -7,7 +7,7 @@
                 </span>
                 <span class="toolbar-tools">
                     <input type="text" placeholder="关键词..." v-show="false">
-                    <button class="button default bold">添加</button>
+                    <button class="button default bold" @click="add">添加</button>
                 </span>
             </div>
             <div class="items">
@@ -68,6 +68,9 @@ export default {
             })
     },
     methods: {
+        add() {
+            alert('111')
+        },
         del(id) {
             this.axios
                 .delete(`post/${id}`)
@@ -87,6 +90,7 @@ export default {
 
 .articles {
     flex: 1;
+    padding: 20px;
 }
 
 .infos {
