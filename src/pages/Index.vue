@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import 'highlight.js/styles/color-brewer.css'
+    import 'highlight.js/styles/github.css'
 
     export default {
         data() {

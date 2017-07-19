@@ -1,14 +1,14 @@
 const path = require('path')
 const mongoose = require('mongoose')
-const config = require('../config')
+const { mongo } = require('../config')
 const { glob, upload } = require('../utils')
 
-mongoose.Promise = Promise
-mongoose.connect(config.mongo.url)
+mongoose.Promise = global.Promise
+mongoose.connect(mongo.url)
 
 const db = mongoose.connection
-db.on('error', () => { console.error(`${config.mongo.url} open faild...`) })
-db.once('open', () => { console.log(`${config.mongo.url} open success...`) })
+db.on('error', () => { console.error(`${mongo.url} open faild...`) })
+db.once('open', () => { console.log(`${mongo.url} open success...`) })
 
 module.exports = async app => {
   const files = await glob(__dirname, '[^index]\\.js')
