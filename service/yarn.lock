@@ -206,8 +206,8 @@ highlight.js@^9.9.0:
   resolved "http://registry.npm.taobao.org/highlight.js/download/highlight.js-9.9.0.tgz#b9995dcfdc2773e307a34f0460d92b9a474782c0"
 
 hoek@4.x.x:
-  version "4.1.1"
-  resolved "http://registry.npm.taobao.org/hoek/download/hoek-4.1.1.tgz#9cc573ffba2b7b408fb5e9c2a13796be94cddce9"
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
 hooks-fixed@1.2.0:
   version "1.2.0"
