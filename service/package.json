@@ -12,7 +12,7 @@
         "highlight.js": "^9.9.0",
         "joi": "^10.6.0",
         "lodash": "^4.17.4",
-        "marked": "^0.3.6",
+        "marked": "^0.3.18",
         "md5": "^2.2.1",
         "method-override": "^2.3.9",
         "mongoose": "^4.7.6",
